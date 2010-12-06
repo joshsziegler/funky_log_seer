@@ -1,3 +1,4 @@
+##License 
 Copyright 2010 Josh Ziegler
 
 This file is part of Funky Log Seer (FLS) 
@@ -14,4 +15,8 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Funky Log Seer (FLS). If not, see <http://www.gnu.org/licenses/>.
+
+##About
+
+
 
