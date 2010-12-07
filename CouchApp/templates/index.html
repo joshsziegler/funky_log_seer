@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="../../style/main.css" type="text/css"/> 
+  </head>
+  <body>
+    {{>header}}
+    <div id="results">
+      <ul id="entries">
+        {{#entries}}
+          <li>
+            <a href="{{ link }}">{{ host }}</a> :
+            <a href="{{ link }}">{{ file }}</a> :
+            <a href="{{ link }}">{{ content }}</a>
+          </li>
+        {{/entries}}
+    </ul>
+  </div>
+</body>
+</html>
