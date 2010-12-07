@@ -1,0 +1,16 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            url: '{{ accumLogVolumePath }}',
+            success: function(data) {
+                var x = JSON.parse(data);
+                accum_bytes = x["rows"][0].value;
+                accum_GB = accum_bytes / 1073741824;
+                accum_GB_rounded = Math.round(accum_GB*100)/100
+                $('.accum-log-volume').html("Total Size of Logs: " +
+                accum_GB_rounded + " GB");
+            }
+        });
+    });
+</script>
+

@@ -7,7 +7,7 @@ function(head, req) {
   var indexPath = path.list('index','recent-items',{descending:true, limit:15});
   var errorsSearchPath = path.list('index','errors',{descending:true, limit:15});
   var warningsSearchPath = path.list('index','warnings',{descending:true, limit:15});
-  var accumLogVolPath = path.list('','log-volume',{descending:true, limit:15});
+  var accumLogVolPath = path.view('log-volume');
 
   var path_parts = req.path;
   // The provides function serves the format the client requests.
@@ -22,6 +22,9 @@ function(head, req) {
         blogName : "Funky Log Seer",
         errors_search : errorsSearchPath,
         warnings_search: warningsSearchPath
+      },
+      javascript : {
+        accumLogVolumePath : accumLogVolPath 
       },
       scripts : {},
       db : req.path[0],
