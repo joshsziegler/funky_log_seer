@@ -125,8 +125,12 @@ class LogObserver(object):
             request.get_method = lambda: 'PUT'
             try:
                 url = opener.open(request)
+                response = json.loads(url.read())
+                if response['ok'] != 'True':
+                    print "Failed to upload log: " + response
             except urllib2.HTTPError, error:
                 contents = error.read()
+                print contents
 
 if __name__ == "__main__":
     logs = get_logs_to_watch(LOG_WATCH_LIST_PATH)
