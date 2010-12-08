@@ -13,28 +13,40 @@
             return results[1];
         }
     }
+    function new_setup_couchdb_url(arg_to_change, new_val_from_user){
+        var args = ['key', 'startkey', 'endkey', 'limit', 'descending',
+        'skip', 'group', 'reduce']; 
+        var arg_vals = [];
+        var cur_val = "";
 
-    function setup_couchdb_url(new_key){
-        /* See http://wiki.apache.org/couchdb/HTTP_view_API */
-        var key = gup('key'); 
-        var startkey = gup('startkey'); 
-        var endkey = gup('endkey'); 
-        var limit = gup('limit'); 
-        var descending = gup('descending'); 
-        var skip = gup('skip'); 
-        var group = gup('group'); 
-        var reduce = gup('reduce'); 
+        for(x in args){
+            if(arg_to_change == args[x]){ 
+                /* this is the arg we want to change, so set it */
+                if(isNaN(new_val_from_user)){
+                    arg_vals[args[x]] = "\"" + new_val_from_user + "\"";    
+                }else{ 
+                    arg_vals[args[x]] = new_val_from_user;    
+                }
+            }else{
+                /* Get the current val of this arg if it exists */
+                cur_val = gup(args[x]);
+                if(cur_val != ""){
+                    /* The old url had this arg set already, so keep it */
+                    arg_vals[args[x]] = cur_val;  
+                }
+            }
+        }
+
+        /* Now create the url */
         var path = window.location.pathname;
         var protocol = window.location.protocol;
         var host = window.location.host;
+        var url = protocol + "//" + host + path + "?";   
 
-        if(new_key != ""){
-            key = "\"" + new_key + "\"";
+        for( x in arg_vals){
+            url = url + x + "=" + arg_vals[x] + "&"; 
         }
-
-        var base_url = protocol + "//" + host + path + "?";   
-        var new_url = base_url + "key=" + key + "&" + "limit=" + limit;
-        return new_url;
+        return url;
     }
 
     $(document).ready(function(){
@@ -48,11 +60,13 @@
                 $('.accum-log-volume').html("Total Size of Logs: " + accum_GB_rounded + " GB");
             }
         });
-        $('.host').live('click', function(e) {
+        $('.key_change').live('click', function(e) {
             e.preventDefault;
-            var url = window.location;
-            alert(setup_couchdb_url($(this).text()));
-            window.location = setup_couchdb_url($(this).text()); 
+            window.location = new_setup_couchdb_url('key', $(this).text());
+        });
+        $('.limit_change').live('click', function(e) {
+            e.preventDefault;
+            window.location = new_setup_couchdb_url('limit', $(this).text());
         });
     });
 </script>
