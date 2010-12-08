@@ -116,6 +116,7 @@ class LogObserver(object):
                                "File": log_name,
                                "Year": now.year,
                                "Month": now.month,
+                               "Day": now.day,
                                "Hour": now.hour,
                                #"Tags":["warning", "error" ]
                                })
