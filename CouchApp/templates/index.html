@@ -8,13 +8,14 @@
   </head>
   <body>
     {{>header}}
+    {{ onlykey }}
     <div id="results">
       <ul id="entries">
         {{#entries}}
           <li>
-            <a href="{{ link }}">{{ host }}</a> :
+            <span class="host">{{ host }}</span> :
             <a href="{{ link }}">{{ file }}</a> :
-            <a href="{{ link }}">{{ content }}</a>
+            {{ content }}
           </li>
         {{/entries}}
     </ul>

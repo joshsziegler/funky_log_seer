@@ -7,6 +7,7 @@ function(head, req) {
   var indexPath = path.list('index','recent-items',{descending:true, limit:15});
   var errorsSearchPath = path.list('index','errors',{descending:true, limit:15});
   var warningsSearchPath = path.list('index','warnings',{descending:true, limit:15});
+  var onlyKeyPath = path.list('index',{descending:true, limit:15, key:'SOMEKEY'});
   var accumLogVolPath = path.view('log-volume');
 
   var path_parts = req.path;
@@ -30,6 +31,7 @@ function(head, req) {
       db : req.path[0],
       design : req.path[2],
       assets : path.asset(),
+      onlykey : onlyKeyPath, 
       entries : List.withRows(function(row) {
         var entry = row.value;
         key = row.key;

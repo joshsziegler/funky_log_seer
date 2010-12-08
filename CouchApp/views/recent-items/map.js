@@ -1,5 +1,7 @@
 function(doc) {
-  if (doc) {
-    emit(doc.key, doc);
+  if (doc.Content && doc.Host && doc.File) {
+    emit(null, doc);
+    emit(doc.Host, doc);
+    emit(doc.File, doc);
   }
 };

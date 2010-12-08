@@ -1,4 +1,42 @@
 <script type="text/javascript">
+    function gup( name ){
+        /*  To use this, see the following */
+        /* http://www.foo.com/index.html?bob=123&frank=321&tom=213#top */
+        /* var frank_param = gup( 'frank' ); */
+        name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+        var regexS = "[\\?&]"+name+"=([^&#]*)";
+        var regex = new RegExp( regexS );
+        var results = regex.exec( window.location.href );
+        if( results == null ){
+            return "";
+        }else{
+            return results[1];
+        }
+    }
+
+    function setup_couchdb_url(new_key){
+        /* See http://wiki.apache.org/couchdb/HTTP_view_API */
+        var key = gup('key'); 
+        var startkey = gup('startkey'); 
+        var endkey = gup('endkey'); 
+        var limit = gup('limit'); 
+        var descending = gup('descending'); 
+        var skip = gup('skip'); 
+        var group = gup('group'); 
+        var reduce = gup('reduce'); 
+        var path = window.location.pathname;
+        var protocol = window.location.protocol;
+        var host = window.location.host;
+
+        if(new_key != ""){
+            key = "\"" + new_key + "\"";
+        }
+
+        var base_url = protocol + "//" + host + path + "?";   
+        var new_url = base_url + "key=" + key + "&" + "limit=" + limit;
+        return new_url;
+    }
+
     $(document).ready(function(){
         $.ajax({
             url: '{{ accumLogVolumePath }}',
@@ -7,9 +45,14 @@
                 accum_bytes = x["rows"][0].value;
                 accum_GB = accum_bytes / 1073741824;
                 accum_GB_rounded = Math.round(accum_GB*100)/100
-                $('.accum-log-volume').html("Total Size of Logs: " +
-                accum_GB_rounded + " GB");
+                $('.accum-log-volume').html("Total Size of Logs: " + accum_GB_rounded + " GB");
             }
+        });
+        $('.host').live('click', function(e) {
+            e.preventDefault;
+            var url = window.location;
+            alert(setup_couchdb_url($(this).text()));
+            window.location = setup_couchdb_url($(this).text()); 
         });
     });
 </script>
