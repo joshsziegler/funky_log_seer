@@ -3,33 +3,40 @@
       <h1><a href="{{ index }}">{{ blogName }}</a></h1>
     </div>
     <div class="search">
-        <div class="key_options">
-            <a href="all" class="key_change">All</a>
-            <a href="{{ errors_search }}">Errors</a>
+        <div class="key_options group">
+            <span class="ctrl_label">Show:</span>
+            <a href="all" class="key_change">All</a> |
+            <a href="{{ errors_search }}">Errors</a> |
             <a href="{{ warnings_search }}">Warnings</a>
         </div>
     </div>
-    <div class="limit_options">
-        Show:
-        <a href="{{ older }}">Older Posts</a>
-        <a  href="25" class="limit_change">25</a>
-        <a  href="50" class="limit_change">50</a>
-        <a  href="100" class="limit_change">100</a>
+    <div class="limit_options group">
+        <span class="ctrl_label">Limit:</span>
+        <a  href="25" class="limit_change">25</a> |
+        <a  href="50" class="limit_change">50</a> |
+        <a  href="100" class="limit_change">100</a> |
     </div>
-    <div class="startkey_options">
+    <div class="key_start_end group">
+        <div class="startkey_options ">
+            Datepicker - startkey
+        </div>
+        <div class="endkey_options">
+            Datepicker - endkey
+        </div>
     </div>
-    <div class="endkey_options">
-    </div>
-    <div class="descending_options">
+    <div class="descending_options group">
         <a href="False" class="descending_change">Ascending</a>
         <a href="True" class="descending_change">Descending</a>
     </div>
-    <div class="skip_options">
-        Skip:
+    <div class="skip_options group">
+        <span class="ctrl_label">Skip:</span>
         <a  href="25" class="skip_change">25</a>
         <a  href="50" class="skip_change">50</a>
     </div>
 
     <!--<div class="option-ctrl">Options</div>-->
-    <div class="accum-log-volume"></div> 
+    <div class="log-volume-data group">
+        <div class="accum-log-volume"></div> 
+    </div>
+    <a href="{{ older }}">Older Posts</a>
 </div>

@@ -56,7 +56,7 @@
   font-size:21px;
   }
   h4 {
-  font-size:19px;
+  font-size:15px;
   }
   h5 {
   font-size:17px;
@@ -73,9 +73,6 @@
   li {
   margin-left:30px;
   list-style-type: none;
-  }
-  p, dl, hr, h1, h2, h3, h4, h5, h6, ol, ul, pre, table, address, fieldset {
-  margin-bottom:20px;
   }
   #toolbar {
   background:none repeat scroll 0 0 #F0F0F0;
@@ -202,4 +199,20 @@
   background-color:#0033CC;
   color:white;
   text-decoration:none;
+  }
+  .log-volume-data, .key_start_end, .key_options, .limit_options, .descending_options, .skip_options, .startkey_options, .endkey_options, .accum-log-volume{
+    float: left;
+  }
+  .group {
+      border:1px solid #DDDDDD;
+      font-family:'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+      font-size:11px;
+      min-height:20px;
+      min-width:60px;
+      margin: 5px;
+      padding: 4px;
+  }
+  .ctrl_label {
+      font-size: 13px;
+      margin-right: 10px;
   }
