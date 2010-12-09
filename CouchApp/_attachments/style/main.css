@@ -220,3 +220,10 @@
       margin-right: 5px;
       font-size: 12px;
   }
+  .ui_selected{
+      /*background-color: #DDDDDD !important;
+      text-decoration: underline !important;
+      */
+      color: #F0F0F0 !important;
+      background-color: #333333 !important;
+  }
