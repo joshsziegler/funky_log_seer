@@ -201,7 +201,7 @@
   text-decoration:none;
   }
   .log-volume-data, .key_start_end, .key_options, .limit_options, .descending_options, .skip_options, .startkey_options, .endkey_options, .accum-log-volume{
-    float: left;
+      float: left;
   }
   .group {
       border:1px solid #DDDDDD;
@@ -215,4 +215,8 @@
   .ctrl_label {
       font-size: 13px;
       margin-right: 10px;
+  }
+  .skip_button .skip_button_separator{
+      margin-right: 5px;
+      font-size: 12px;
   }

@@ -84,18 +84,28 @@
             var cur_view_limit = gup('limit');
             var new_skip = 0;
             var big_skip = 2;
+
+            if(cur_skip == "") cur_skip = 0;
+            if(cur_view_limit == "") cur_view_limit = 0;
+            alert(cur_skip);
             
             switch(operation){
                 case "big_back":
                     new_skip = ( big_skip * cur_view_limit) - cur_skip;
+                    break;
                 case "back":
                     new_skip = cur_view_limit - cur_skip;
+                    break;
                 case "forward":
                     new_skip = cur_view_limit + cur_skip;
+                    break;
                 case "big_forward":
                     new_skip = ( big_skip * cur_view_limit) + cur_skip;
+                    break;
+                default:
+                    alert("Error in switch!");
             }
-            new_skip = max(0, new_skip); /* Do no give negative numbers. */
+            new_skip = Math.max(0, new_skip); /* Do no give negative numbers. */
             window.location = new_setup_couchdb_url('skip', new_skip);
         });
     });

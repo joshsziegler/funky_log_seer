@@ -126,8 +126,9 @@ class LogObserver(object):
             try:
                 url = opener.open(request)
                 response = json.loads(url.read())
-                if response['ok'] != 'True':
-                    print "Failed to upload log: " + response
+                if response['ok'] != True:
+                    print "Failed to upload log: " 
+                    print response
             except urllib2.HTTPError, error:
                 contents = error.read()
                 print contents
