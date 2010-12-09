@@ -53,6 +53,24 @@
         }
         return url;
     }
+    function isValidDate(input){
+        var validformat=/^\d{8}$/
+        var result = true;
+        if (!validformat.test(input)){
+            result = false;
+        }
+        return result;
+    }
+    function datePickersAreValid(){
+        var result = true;
+        var start_date = Number($('.start_key_date_picker').getText());
+        var end_date = Number($('.end_key_datepicker').getText());
+        if(start_date <= end_date){
+            result = false;
+        }
+        return result;
+    }
+
 
     $(document).ready(function(){
         $.ajax({
@@ -65,8 +83,23 @@
                 $('.accum-log-volume').html("Total Size of Logs: " + accum_GB_rounded + " GB");
             }
         });
-        $('.start_key_datepicker').datepicker({ dateFormat: 'yymmdd' });
-        $('.end_key_datepicker').datepicker({ dateFormat: 'yymmdd' });
+        
+        $('.start_key_datepicker').datepicker({ 
+            dateFormat: 'yymmdd',
+            onClose: function(dateText, inst){
+                if(isValidDate(dateText) && datePickersAreValid() ){
+                    window.location = new_setup_couchdb_url('startkey', dateText);
+                }
+            }
+        });
+        $('.end_key_datepicker').datepicker({ 
+            dateFormat: 'yymmdd', 
+            onClose: function(dateText, inst){
+                if(isValidDate(dateText) && datePickersAreValid() ){
+                    window.location = new_setup_couchdb_url('endkey', dateText);
+                }
+            }
+        });
         $('.key_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('key', $(this).attr('href'));
