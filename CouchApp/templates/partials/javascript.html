@@ -23,7 +23,12 @@
             if(arg_to_change == args[x]){ 
                 /* this is the arg we want to change, so set it */
                 if(isNaN(new_val_from_user)){
-                    arg_vals[args[x]] = "\"" + new_val_from_user + "\"";
+                    if(new_val_from_user == "True" || new_val_from_user == "False"){
+                        arg_vals[args[x]] = new_val_from_user;
+                    }else{
+                        arg_vals[args[x]] = "\"" + new_val_from_user + "\"";
+                        
+                    }
                 }else{ 
                     arg_vals[args[x]] = new_val_from_user;    
                 }
@@ -67,6 +72,14 @@
         $('.limit_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('limit', $(this).attr('href'));
+        });
+        $('.descending_change').live('click', function(e) {
+            e.preventDefault();
+            window.location = new_setup_couchdb_url('descending', $(this).attr('href'));
+        });
+        $('.skip_change').live('click', function(e) {
+            e.preventDefault();
+            window.location = new_setup_couchdb_url('skip', $(this).attr('href'));
         });
     });
 </script>
