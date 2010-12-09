@@ -1,104 +1,137 @@
-#/Applications/Firefox.app/Contents/MacOS/updates/backup-update.log
-#/Applications/Firefox.app/Contents/MacOS/updates/last-update.log
-#/Applications/NetBeans/glassfish-v2ur2/domains/domain1/config/derby.log
-#/Applications/NetBeans/glassfish-v2ur2/domains/domain1/logs/jvm.log
-#/Applications/NetBeans/glassfish-v2ur2/domains/domain1/logs/server.log
-#/Applications/NetBeans/glassfish-v2ur2/jbi/checksum.log
-#/Applications/splunk/var/log/splunk/audit.log
-#/Applications/splunk/var/log/splunk/btool.log
-#/Applications/splunk/var/log/splunk/first_install.log
-#/Applications/splunk/var/log/splunk/intentions.log
-#/Applications/splunk/var/log/splunk/license_audit.log
-#/Applications/splunk/var/log/splunk/metrics.log
-#/Applications/splunk/var/log/splunk/scheduler.log
-#/Applications/splunk/var/log/splunk/searches.log
-#/Applications/splunk/var/log/splunk/searchhistory.log
-#/Applications/splunk/var/log/splunk/splunkd.log
-#/Applications/splunk/var/log/splunk/splunkd_access.log
-#/Applications/splunk/var/log/splunk/splunkd_stderr.log
-#/Applications/splunk/var/log/splunk/splunkd_stdout.log
-#/Applications/splunk/var/log/splunk/web_access.log
-#/Applications/splunk/var/log/splunk/web_service.log
-#/Applications/splunk/var/run/splunk/dispatch/scheduler__nobody__search_SW5kZXhpbmcgd29ya2xvYWQ_at_1286382600_998266072/search.log
-#/Applications/splunk/var/run/splunk/dispatch/scheduler__nobody__search_SW5kZXhpbmcgd29ya2xvYWQ_at_1286384400_70091292/search.log
-#/Applications/splunk/var/run/splunk/dispatch/scheduler__nobody__search_SW5kZXhpbmcgd29ya2xvYWQ_at_1286386200_221592900/search.log
-#/Applications/splunk/var/run/splunk/dispatch/scheduler__nobody__search_VG9wIGZpdmUgc291cmNldHlwZXM_at_1286386200_1697238958/search.log
-#/Applications/splunk/var/run/splunk/dispatch/scheduler__nobody__search_VG9wIGZpdmUgc291cmNldHlwZXM_at_1286386500_1088831176/search.log
-#/Applications/Steam.app/Contents/MacOS/osx32/gameoverlayui.log
-#/Applications/zdesktop/.install4j/files.log
-#/Applications/zdesktop/.install4j/installation.log
-#/Applications/zdesktop/log/derby.log
-#/Applications/zdesktop/log/zdesktop.log
-#/Applications/zdesktop/redolog/redo.log
-/Library/KBOXAgent/Home/bin/kpatch.log
-#/Library/Logs/GoogleSoftwareUpdateDaemon.log
-#/Library/Logs/LKDC-setup.log
-#/Library/Logs/SetupAssistant.log
-/Library/Logs/SoftwareUpdate.log
-#/Library/Logs/DirectoryService/DirectoryService.error.log
-#/Library/Logs/DirectoryService/DirectoryService.server.log
-#/Library/Ruby/Gems/1.8/gems/clarity-0.9.8/test/files/logfile.log
-#/Library/Ruby/Gems/1.8/gems/eventmachine-0.12.10/ext/mkmf.log
-#/Library/Ruby/Gems/1.8/gems/eventmachine_httpserver-0.2.0/ext/mkmf.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/GeneratorBenchmarkComparison.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/GeneratorBenchmarkExt.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/GeneratorBenchmarkPure.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/GeneratorBenchmarkRails.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/ParserBenchmarkComparison.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/ParserBenchmarkExt.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/ParserBenchmarkPure.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/ParserBenchmarkRails.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/benchmarks/data-p4-3GHz-ruby18/ParserBenchmarkYAML.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/ext/json/ext/generator/mkmf.log
-#/Library/Ruby/Gems/1.8/gems/json-1.4.6/ext/json/ext/parser/mkmf.log
-#/opt/local/var/log/couchdb/couch.log
-#/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_java_tomcat6/main.log
-#/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_python_py-twisted/main.log
-#/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_python_py25-nose/main.log
-#/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_python_py25-setuptools/main.log
-#/opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_python_py26-ipython/main.log
-#/private/var/kace/SMMP/agent.log
-#/private/var/kace/SMMP/agent1.log
-#/private/var/kace/SMMP/kagentbootupscript.log
-#/private/var/kace/SMMP/kagentlogonscript.log
-#/private/var/kace/SMMP/kpatch.log
-#/private/var/kace/SMMP/pluginPatching.log
-#/private/var/kace/SMMP/pluginWeb.log
-#/private/var/kace/SMMP/pluginWeb1.log
-#/private/var/kace/SMMP/runkbot.log
-#/private/var/log/alf.log
-#/private/var/log/dpd.log
-#/private/var/log/fsck_hfs.log
-#/private/var/log/hdiejectd.log
-#/private/var/log/install.log
-#/private/var/log/ipfw.log
-#/private/var/log/kernel.log
-#/private/var/log/launchd-shutdown.log
-#/private/var/log/secure.log
-#/private/var/log/system.log
-#/private/var/log/windowserver.log
-#/private/var/log/windowserver_last.log
-#/private/var/run/sntp.log
-#/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rails-1.2.6/configs/empty.log
-#/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rails-2.2.2/configs/empty.log
-#/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/lib/ruby/gems/1.8/gems/rails-2.3.5/configs/empty.log
-#/Users/zieglerj2/test.log
-#/Users/zieglerj2/.netbeans/6.5/var/log/messages.log
-#/Users/zieglerj2/.netbeans/6.9/var/log/messages.log
-#/Users/zieglerj2/.netbeans-derby/derby.log
-#/Users/zieglerj2/clarity/test/files/logfile.log
-#/Users/zieglerj2/Documents/eclipse_workspace/.metadata/.log
-#/Users/zieglerj2/eclipse/configuration/org.eclipse.update/install.log
-#/Users/zieglerj2/Library/Application Support/Google/Google Talk Plugin/gtbplugin.log
-#/Users/zieglerj2/Library/Application Support/Steam/steam.log
-#/Users/zieglerj2/Library/Application Support/updatetool/ziegler-maclt.fs.findlay.edu/notifier.log
-#/Users/zieglerj2/Library/Application Support/updatetool/ziegler-maclt.local/notifier.log
-#/Users/zieglerj2/Library/Logs/DiskUtility.log
-#/Users/zieglerj2/Library/Logs/fsck_hfs.log
-#/Users/zieglerj2/Library/Logs/GoogleSoftwareUpdateAgent.log
-#/Users/zieglerj2/Library/Logs/Java Console.log
-#/Users/zieglerj2/Library/Logs/Sync/syncservices.log
-#/Users/zieglerj2/Library/som/app-0.log
-#/Users/zieglerj2/Library/VirtualBox/Machines/XPlanner_Test - Xubuntu_v01/Logs/VBox.log
-#/Users/zieglerj2/Library/VirtualBox/Machines/Xubuntu - Base Image/Logs/VBox.log
-/var/log/system.log
+#/home/jz/.usbcreator.log
+#/home/jz/child.log
+#/home/jz/.mozilla/firefox/bh5k6wv7.default/extensions.log
+#/home/jz/.eclipse/org.eclipse.platform_3.5.0_155965261/configuration/org.eclipse.update/install.log
+#/home/jz/.config/google-googletalkplugin/gtbplugin.log
+#/home/jz/.config/tomboy/tomboy.log
+#/home/jz/Games/Pen and Paper/Dungeons and Dragons/Unsorted/DnD-2/Treasure Gen/uninstal.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207175758.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207191556.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182708.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207192210.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207201304.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207174854.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207175711.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193847.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182644.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182724.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101128190844.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101124175950.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182044.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207192240.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101126184328.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207192358.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193655.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193816.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207201324.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207191328.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207180655.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182927.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207192109.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193604.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207183158.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207191724.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182401.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182309.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207185734.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207183012.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207192231.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193949.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207175404.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207185018.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182530.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207181141.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207181819.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193100.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207194109.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207193927.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207184940.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207183202.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207183702.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207190759.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207173922.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207183117.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207190248.log
+#/home/jz/Finances/gnu_cash_files/All Accounts.20101207182009.log
+#/home/jz/.cache/notify-osd.log
+#/home/jz/My Games/Sid Meier's Civilization 4/Logs/resmgr.log
+#/home/jz/My Games/Sid Meier's Civilization 4/Logs/PythonErr2.log
+#/home/jz/My Games/Sid Meier's Civilization 4/Logs/init.log
+#/home/jz/My Games/Sid Meier's Civilization 4/Logs/xml.log
+#/home/jz/Disc_Images/Games/Worms - Full Files/wormsarm - full files/rew2.log
+#/home/jz/Disc_Images/Games/Worms - Full Files/wormsarm - full files/landgen.log
+#/home/jz/Disc_Images/Games/Warcraft III - ver 1.21/War3xInst.log
+#/home/jz/Disc_Images/Games/Warcraft III - ver 1.21/War3Inst.log
+#/home/jz/Disc_Images/Games/Warcraft III - ver 1.21/bnupdate.log
+#/home/jz/.VirtualBox/Machines/Xubuntu - Gaming/Logs/VBox.log
+#/home/jz/.VirtualBox/Machines/Windows 7 - Base Install/Logs/VBox.log
+#/home/jz/.VirtualBox/Machines/Ajellito-test_01-Xubuntu/Logs/VBox.log
+#/home/jz/.VirtualBox/Machines/Xubuntu - Base Install/Logs/VBox.log
+#/home/jz/.VirtualBox/Machines/PC Gaming - WinXP/Logs/VBox.log
+#/home/jz/.VirtualBox/Machines/Windows XP - Base Install/Logs/VBox.log
+#/home/jz/.VirtualBox/Machines/D&D Box - WinXP/Logs/VBox.log
+#/home/jz/.kde/share/apps/kconf_update/log/update.log
+#/home/jz/Programming/scripts/wget_results_2.log
+#/home/jz/Programming/scripts/wget_results.log
+#/home/jz/Programming/scripts/wget_results_3.log
+#/home/jz/.local/share/exaile/logs/exaile.log
+#/home/jz/.local/share/gvfs-metadata/root-d7b0867a.log
+#/home/jz/.local/share/gvfs-metadata/uuid-702D-59F4-e44bd6d4.log
+#/home/jz/.local/share/gvfs-metadata/uuid-15DD-2927-822c1c5a.log
+#/home/jz/.local/share/gvfs-metadata/home-1ea4ebc3.log
+#/home/jz/.local/share/gvfs-metadata/archive:host=file%253A%252F%252F%252Fhome%252Fjz%252FDownloads%252FPandoras_Box_DVD_1_of_3.iso-55362973.log
+#/home/jz/.local/share/gvfs-metadata/label-Gentoo\x20Linux\x20amd64\x202008.0-49816269.log
+#/home/jz/Software/Linux/Ventrilo_Server/ventrilo_srv.log
+#/var/lib/texmf/web2c/updmap.log
+#/var/lib/texmf/web2c/luatex/dvilualatex.log
+#/var/lib/texmf/web2c/luatex/lualatex.log
+#/var/lib/texmf/web2c/luatex/luatex.log
+#/var/lib/texmf/web2c/luatex/dviluatex.log
+#/var/lib/texmf/web2c/metafont/mf.log
+#/var/lib/texmf/web2c/tex/tex.log
+#/var/lib/texmf/web2c/pdftex/pdfetex.log
+#/var/lib/texmf/web2c/pdftex/pdftex.log
+#/var/lib/texmf/web2c/pdftex/latex.log
+#/var/lib/texmf/web2c/pdftex/pdflatex.log
+#/var/lib/texmf/web2c/pdftex/etex.log
+#/var/lib/dkms/virtualbox-ose/3.2.8/2.6.32-26-generic/x86_64/log/make.log
+#/var/lib/dkms/virtualbox-ose/3.2.8/2.6.35-23-generic/x86_64/log/make.log
+#/var/games/bsdgames/battlestar.log
+#/var/games/bsdgames/snake.log
+#/var/log/Xorg.1.log
+#/var/log/jockey.log
+#/var/log/alternatives.log
+#/var/log/fontconfig.log
+#/var/log/lpr.log
+#/var/log/dpkg.log
+#/var/log/daemon.log
+#/var/log/Xorg.0.log
+/var/log/mail.log
+/var/log/messages
+#/var/log/pm-powersave.log
+#/var/log/boot.log
+/var/log/user.log
+/var/log/auth.log
+/var/log/kern.log
+#/var/log/bootstrap.log
+#/var/log/pycentral.log
+#/var/log/ufw.log
+#/var/log/unattended-upgrades/unattended-upgrades.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-12-02_10:42:49.322450.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-05_16:19:13.667029.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-10_18:02:57.429006.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-18_12:42:03.265235.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-12_15:46:43.044057.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-30_12:12:01.901747.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-12-07_10:21:12.480942.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-25_22:49:52.207655.log
+#/var/log/unattended-upgrades/unattended-upgrades-dpkg_2010-11-04_16:00:35.107282.log
+#/var/log/apt/history.log
+#/var/log/apt/term.log
+#/var/log/installer/casper.log
+#/var/log/dist-upgrade/apt-term.log
+#/var/log/dist-upgrade/history.log
+#/var/log/dist-upgrade/apt.log
+#/var/log/dist-upgrade/xorg_fixup.log
+#/var/log/dist-upgrade/main.log
+#/var/log/dist-upgrade/term.log
