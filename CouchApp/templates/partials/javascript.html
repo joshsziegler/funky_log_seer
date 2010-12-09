@@ -79,13 +79,18 @@
         }
         /* Arg-specific logic  */
         if(arg_vals['limit'] != ""){
-            /* $('.limit_options > a [href=' + arg_vals['limit'] +
-            ']').addClass(selected_class); */
             $('.limit_options > a').each(function(i, val){
                 if($(this).attr('href') == arg_vals['limit'] ){
                     $(this).addClass(selected_class);
                 }
             });
+        }
+        if(arg_vals['descending'] != ""){
+            if(arg_vals['descending'] == "False"){
+               $('.ascending').addClass(selected_class); 
+            }else {
+               $('.descending').addClass(selected_class); 
+            }
         }
     }
 
