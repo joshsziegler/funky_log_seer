@@ -79,7 +79,24 @@
         });
         $('.skip_change').live('click', function(e) {
             e.preventDefault();
-            window.location = new_setup_couchdb_url('skip', $(this).attr('href'));
+            var operation = $(this).attr('href');
+            var cur_skip = gup('skip');
+            var cur_view_limit = gup('limit');
+            var new_skip = 0;
+            var big_skip = 2;
+            
+            switch(operation){
+                case "big_back":
+                    new_skip = ( big_skip * cur_view_limit) - cur_skip;
+                case "back":
+                    new_skip = cur_view_limit - cur_skip;
+                case "forward":
+                    new_skip = cur_view_limit + cur_skip;
+                case "big_forward":
+                    new_skip = ( big_skip * cur_view_limit) + cur_skip;
+            }
+            new_skip = max(0, new_skip); /* Do no give negative numbers. */
+            window.location = new_setup_couchdb_url('skip', new_skip);
         });
     });
 </script>
