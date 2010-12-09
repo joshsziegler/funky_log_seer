@@ -13,9 +13,8 @@
             return results[1];
         }
     }
+    var args = ['key', 'startkey', 'endkey', 'limit', 'descending','skip', 'group', 'reduce']; 
     function new_setup_couchdb_url(arg_to_change, new_val_from_user){
-        var args = ['key', 'startkey', 'endkey', 'limit', 'descending',
-        'skip', 'group', 'reduce']; 
         var arg_vals = [];
         var cur_val = "";
 
@@ -70,9 +69,29 @@
         }
         return result;
     }
+    function updateGuiBasedOnUrlArgs(){
+        /* This is and ugly hack that I need to revist later. */
+        var selected_class = 'ui_selected'; /* Class to add to UI elements that are selected */
+        /* Get all current supported args */
+        var arg_vals = [];
+        for(x in args){
+           arg_vals[args[x]] = gup(args[x]); 
+        }
+        /* Arg-specific logic  */
+        if(arg_vals['limit'] != ""){
+            /* $('.limit_options > a [href=' + arg_vals['limit'] +
+            ']').addClass(selected_class); */
+            $('.limit_options > a').each(function(i, val){
+                if($(this).attr('href') == arg_vals['limit'] ){
+                    $(this).addClass(selected_class);
+                }
+            });
+        }
+    }
 
 
     $(document).ready(function(){
+        updateGuiBasedOnUrlArgs(); /* This must be first! */
         $.ajax({
             url: '{{ accumLogVolumePath }}',
             success: function(data) {
