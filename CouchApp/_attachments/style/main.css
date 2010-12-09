@@ -227,3 +227,6 @@
       color: #F0F0F0 !important;
       background-color: #333333 !important;
   }
+  .datepicker{
+      width: 70px;
+  }

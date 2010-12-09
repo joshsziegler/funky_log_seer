@@ -62,8 +62,8 @@
     }
     function datePickersAreValid(){
         var result = true;
-        var start_date = Number($('.start_key_date_picker').getText());
-        var end_date = Number($('.end_key_datepicker').getText());
+        var start_date = Number($('.start_key_date_picker').val());
+        var end_date = Number($('.end_key_datepicker').val());
         if(start_date <= end_date){
             result = false;
         }
@@ -91,6 +91,12 @@
             }else {
                $('.descending').addClass(selected_class); 
             }
+        }
+        if(arg_vals['startkey'] != ""){
+            $('.start_key_datepicker').val(arg_vals['startkey']);
+        }
+        if(arg_vals['endkey'] != ""){
+            $('.end_key_datepicker').val(arg_vals['endkey']);
         }
     }
 
