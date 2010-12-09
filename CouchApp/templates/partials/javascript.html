@@ -65,6 +65,8 @@
                 $('.accum-log-volume').html("Total Size of Logs: " + accum_GB_rounded + " GB");
             }
         });
+        $('.start_key_datepicker').datepicker({ dateFormat: 'yymmdd' });
+        $('.end_key_datepicker').datepicker({ dateFormat: 'yymmdd' });
         $('.key_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('key', $(this).attr('href'));
@@ -94,6 +96,10 @@
                 cur_view_limit = 0;
             }else{
                 cur_view_limit = Number(cur_view_limit);
+            }
+
+            if(cur_view_limit == 0){
+                cur_view_limit = 25; /* Min view limit of 25 */
             }
             
             switch(operation){
