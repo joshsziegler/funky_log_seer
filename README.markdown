@@ -19,4 +19,14 @@ along with Funky Log Seer (FLS). If not, see <http://www.gnu.org/licenses/>.
 ##About
 
 
+##To Do
+1 Host view (in json)
+2 Files view (in json)
+3 add host selector (input)
+4 add files selector (input)
+5 change date picker to show all items by default
+6 change view to read in new keys from ui selectors
+7 add default ui selections in default view
+8 setup posting for multiple keys
+
 
