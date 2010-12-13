@@ -118,20 +118,28 @@
         $('.singledatekey_datepicker').datepicker({ 
             dateFormat: 'yymmdd',
             onClose: function(dateText, inst){
-                if(isValidDate(dateText) && datePickersAreValid() ){
-                    var keys = '{"keys":[{"date":"20101220"}]}';
+                if(isValidDate(dateText) ){
+                    var keys = JSON.stringify({"keys":[{"date":"2010124"}]});
                     $.ajax({
                        type: "POST",
+                       contentType: "application/json",
                        url: window.location,
+                       dataType: 'html',
+                       processData: false,
                        data: keys,
                        success: function(msg){
-                           alert( "Data Saved: " + msg );
+                            var new_results = $("#results", msg);
+                            var new_results = $("#results", msg).text();
+                            var new_results = $("#results", msg).html();
+                            alert("Hello");
+                       },error: function(XMLHttpRequest, textStatus, errorThrown){
+                           alert( textStatus);
                        }
                     });
                 }
             }
         });
-        
+       /*  
         $('.start_key_datepicker').datepicker({ 
             dateFormat: 'yymmdd',
             onClose: function(dateText, inst){
@@ -148,6 +156,7 @@
                 }
             }
         });
+        */
         $('.key_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('key', $(this).attr('href'));
@@ -160,6 +169,14 @@
             e.preventDefault();
             window.location = new_setup_couchdb_url('descending', $(this).attr('href'));
         });
+        $('.clear_singledatekey').live('click', function(e) {
+            e.preventDefault();
+            today = new Date();
+            cur_date = String(today.getFullYear()) + String(today.getMonth()) + String(today.getDate());
+            $('.singledatekey_datepicker').val(cur_date);
+            window.location = new_setup_couchdb_url('endkey', '');
+        });
+        /*
         $('.clear_start_key').live('click', function(e) {
             e.preventDefault();
             $('.start_key_datepicker').val('');
@@ -170,6 +187,7 @@
             $('.end_key_datepicker').val('');
             window.location = new_setup_couchdb_url('endkey', '');
         });
+        */
         $('.skip_change').live('click', function(e) {
             e.preventDefault();
             var operation = $(this).attr('href');
