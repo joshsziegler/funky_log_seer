@@ -124,14 +124,12 @@
                        type: "POST",
                        contentType: "application/json",
                        url: window.location,
-                       dataType: 'html',
+                       dataType: "html",
                        processData: false,
                        data: keys,
-                       success: function(msg){
-                            var new_results = $("#results", msg);
-                            var new_results = $("#results", msg).text();
-                            var new_results = $("#results", msg).html();
-                            alert("Hello");
+                       success: function(data){
+                            var results = $(data).filter(".results").html();
+                            $(".results").html(results);
                        },error: function(XMLHttpRequest, textStatus, errorThrown){
                            alert( textStatus);
                        }
