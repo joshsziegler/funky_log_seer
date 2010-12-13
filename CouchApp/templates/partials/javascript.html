@@ -115,6 +115,22 @@
                 $('.accum-log-volume').html("Total Size of Logs: " + accum_GB_rounded + " GB");
             }
         });
+        $('.singledatekey_datepicker').datepicker({ 
+            dateFormat: 'yymmdd',
+            onClose: function(dateText, inst){
+                if(isValidDate(dateText) && datePickersAreValid() ){
+                    var keys = '{"keys":[{"date":"20101220"}]}';
+                    $.ajax({
+                       type: "POST",
+                       url: window.location,
+                       data: keys,
+                       success: function(msg){
+                           alert( "Data Saved: " + msg );
+                       }
+                    });
+                }
+            }
+        });
         
         $('.start_key_datepicker').datepicker({ 
             dateFormat: 'yymmdd',

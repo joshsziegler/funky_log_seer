@@ -17,6 +17,20 @@
         <a  href="100" class="limit_change">100</a> 
     </div>
     <div class="key_start_end group">
+         <span class="datekey_options ">
+            <span class="ctrl_label">Date:</span> 
+            <input class="singledatekey_datepicker datepicker" type="text"
+            readonly="readonly" value="{{ default_day }}" />
+            <span class="ui-icon ui-icon-closethick clear_start_key" style="display: inline-block;">clear</span>
+        </span>
+        <!-- We would like to use this code, but CouchDB hasn't accepted the
+             patch to allow multiplekeys along with start and end keys which is
+             described here:
+             http://jamietalbot.com/2010/03/24/using-multiple-start-and-end-keys-for-couchdb-views/
+             and the issue is here:
+             https://issues.apache.org/jira/browse/COUCHDB-523
+        -->
+        <!--  
         <span class="startkey_options ">
             <span class="ctrl_label">Start Date:</span> 
             <input class="start_key_datepicker datepicker" type="text"
@@ -30,6 +44,7 @@
             readonly="readonly" value="{{ default_end_date }}" />
             <span class="ui-icon ui-icon-closethick clear_end_key" style="display: inline-block;">clear</span>
         </span>
+        -->
     </div>
     <div class="descending_options group">
         <span class="ctrl_label">Sort:</span>
@@ -49,4 +64,6 @@
     <div class="log-volume-data group">
         <div class="accum-log-volume"></div> 
     </div>
+    <div id="key_selector" style="display: none;" >{{ default_day }}</div>
+    <div id="key_selector_default" style="display: none;" ></div>
 </div>

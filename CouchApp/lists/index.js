@@ -19,8 +19,11 @@ function(head, req) {
   var last_year = curr_year - 1;
   var next_month = curr_month + 1;
 
+  var default_day = String(curr_year) + String(curr_month) + String(curr_date);
   var default_start_key = String(last_year) + String(curr_month) + String(curr_date);
   var default_end_key = String(curr_year) + String(next_month) + String(curr_date);
+
+  var keys = {"keys": [{"date":default_day }]}
 
   var path_parts = req.path;
   // The provides function serves the format the client requests.
@@ -36,7 +39,8 @@ function(head, req) {
         errors_search : errorsSearchPath,
         warnings_search: warningsSearchPath,
         default_start_date: default_start_key,
-        default_end_date: default_end_key
+        default_end_date: default_end_key,
+        default_day: JSON.stringify(default_day)
       },
       javascript : {
         accumLogVolumePath : accumLogVolPath 
