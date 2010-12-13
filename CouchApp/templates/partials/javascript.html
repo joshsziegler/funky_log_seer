@@ -13,7 +13,7 @@
             return results[1];
         }
     }
-    var args = ['key', 'startkey', 'endkey', 'limit', 'descending','skip', 'group', 'reduce']; 
+    var args = ['key', 'keys', 'startkey', 'endkey', 'limit', 'descending','skip', 'group', 'reduce']; 
     function new_setup_couchdb_url(arg_to_change, new_val_from_user){
         var arg_vals = [];
         var cur_val = "";
@@ -100,6 +100,12 @@
         if(arg_vals['endkey'] != ""){
             $('.end_key_datepicker').val(arg_vals['endkey']);
         }
+        if(arg_vals['keys'] != ""){
+            var keys = unescape(arg_vals['keys']);
+            keys = keys.slice(1, keys.length -1);
+            var keys_parsed = JSON.parse(keys);
+            $('.singledatekey_datepicker').val(keys_parsed[0].date);
+        }
     }
 
 
@@ -119,7 +125,8 @@
             dateFormat: 'yymmdd',
             onClose: function(dateText, inst){
                 if(isValidDate(dateText) ){
-                    var keys = JSON.stringify({"keys":[{"date":"2010124"}]});
+                    var keys = JSON.stringify([{"date":"2010126"}]);
+                    window.location = new_setup_couchdb_url("keys", keys); 
                     $.ajax({
                        type: "POST",
                        contentType: "application/json",
