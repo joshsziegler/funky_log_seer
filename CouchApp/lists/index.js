@@ -10,6 +10,18 @@ function(head, req) {
   var onlyKeyPath = path.list('index',{descending:true, limit:15, key:'SOMEKEY'});
   var accumLogVolPath = path.view('log-volume');
 
+
+  var today = new Date();
+  var curr_year = today.getFullYear();
+  var curr_month = today.getMonth();
+  var curr_date = today.getDate();
+
+  var last_year = curr_year - 1;
+  var next_month = curr_month + 1;
+
+  var default_start_key = String(last_year) + String(curr_month) + String(curr_date);
+  var default_end_key = String(curr_year) + String(next_month) + String(curr_date);
+
   var path_parts = req.path;
   // The provides function serves the format the client requests.
   // The first matching format is sent, so reordering functions changes
@@ -22,7 +34,9 @@ function(head, req) {
         index : indexPath,
         blogName : "Funky Log Seer",
         errors_search : errorsSearchPath,
-        warnings_search: warningsSearchPath
+        warnings_search: warningsSearchPath,
+        default_start_date: default_start_key,
+        default_end_date: default_end_key
       },
       javascript : {
         accumLogVolumePath : accumLogVolPath 
