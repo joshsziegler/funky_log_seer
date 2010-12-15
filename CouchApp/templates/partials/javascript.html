@@ -96,9 +96,20 @@
 
         /* Get all current supported args */
         var arg_vals = [];
+        var args_provided = false;
         for(x in args){
            arg_vals[args[x]] = gup(args[x]); 
+           if(args_provided == false && gup(args[x]) != ""){
+               args_provided = true;
+           }
         }
+
+        if(args_provided == false){
+            /* If there are no options specified, force them to appear by
+            clicking the link which has them specified. */
+             window.location.href = $(".view_" + get_page_name()).attr('href');
+        }
+         
         /* Arg-specific logic  */
         if(arg_vals['autoupdate'] != ""){
             if(arg_vals['autoupdate'] == "True"){
