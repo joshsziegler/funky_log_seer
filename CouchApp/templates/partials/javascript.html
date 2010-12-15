@@ -141,7 +141,7 @@ function update_page(){
     update_log_volume_stats();
     var date_key = $('.singledatekey_datepicker').val();
     if(isValidDate(date_key) ){
-        var keys = JSON.stringify([{"date": date_key}]);
+        var keys = JSON.stringify({"keys": [{"date": date_key}]});
         $.ajax({
             type: "POST",
             contentType: "application/json",
@@ -180,8 +180,8 @@ function update_log_volume_stats(){
 
 
     $(document).ready(function(){
-        update_page(); /* Grab our first set of results */
         updateGuiBasedOnUrlArgs();
+        update_page(); /* Grab our first set of results */
         if(gup('autoupdate') == "True"){
             setInterval("update_page()", 10000); /* Update the results every 10 seconds */
         }
