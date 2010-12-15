@@ -252,6 +252,11 @@ function update_log_volume_stats(){
 
 
     $(document).ready(function(){
+        /*  TEST BEGIN  */
+        var then = new Date();
+        then.setDate (then.getDate() - 16);
+        alert (then.toDateString());
+        /*  TEST END */
         updateGuiBasedOnUrlArgs();
         update_page(); /* Grab our first set of results */
         if(gup('autoupdate') == "true"){
