@@ -151,6 +151,17 @@
             $('.singledatekey_datepicker').val(keys_parsed[0].date);
             $('.host_key').val(keys_parsed[0].host);
             $('.file_key').val(keys_parsed[0].file);
+
+        }
+    }
+    function update_results_based_on_url_args(){
+        if($('.host_key').val() != ""){
+            $('.host_key_change').hide();
+            $('.host_key_separator').hide();
+        }
+        if($('.file_key').val() != ""){
+            $('.file_key_change').hide();
+            $('.file_key_separator').hide();
         }
     }
 
@@ -200,6 +211,7 @@ function update_page(){
                 results = "Nothing to display...";    
             }
             $(".results").html(results);
+            update_results_based_on_url_args();
             /* Give a visual que that we updated the page..  */
             $('.auto_update_on').effect("pulsate", { times:3 }, 1000);
             console.log("Updated results...");

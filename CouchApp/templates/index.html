@@ -17,8 +17,10 @@
       <ul class="entries">
         {{#entries}}
           <li>
-            <a href="{{ host }}" class="host_key_change">{{ host }}</a> :
-            <a href="{{ file }}" class="file_key_change">{{ file }}</a> :
+            <a href="{{ host }}" class="host_key_change">{{ host }}</a>
+            <span class="host_key_separator"> :</span>
+            <a href="{{ file }}" class="file_key_change">{{ file }}</a>
+            <span class="file_key_separator"> :</span>
             {{ content }}
           </li>
         {{/entries}}
