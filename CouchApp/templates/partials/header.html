@@ -1,13 +1,15 @@
 <div id="toolbar">
     <div id="header">
-      <h1><a href="{{ index }}">{{ blogName }}</a></h1>
+      <h1><a href="{{ view_all }}">{{ app_name }}</a></h1><!-- Notice this does
+      not trigger a view_change event, thus taking them back to the default
+      options. -->
     </div>
     <div class="search">
         <div class="key_options group">
             <span class="ctrl_label">Show:</span>
-            <a href="all" class="key_change">All</a> |
-            <a href="{{ errors_search }}">Errors</a> |
-            <a href="{{ warnings_search }}">Warnings</a>
+            <a href="{{ view_all }}" class="view_change">All</a> |
+            <a href="{{ view_errors }}" class="view_change" >Errors</a> |
+            <a href="{{ view_warnings }}" class="view_change" >Warnings</a>
         </div>
     </div>
     <div class="limit_options group">

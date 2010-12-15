@@ -4,24 +4,17 @@ function(head, req) {
   var List = require("vendor/couchapp/lib/list");
   var path = require("vendor/couchapp/lib/path").init(req);
 
-  var indexPath = path.list('index','recent-items',{descending:true, limit:15});
-  var errorsSearchPath = path.list('index','errors',{descending:true, limit:15});
-  var warningsSearchPath = path.list('index','warnings',{descending:true, limit:15});
-  var onlyKeyPath = path.list('index',{descending:true, limit:15, key:'SOMEKEY'});
-  var accumLogVolPath = path.view('log-volume');
+  var view_all = path.list('index','all',{descending:true, limit:15});
+  var view_errors = path.list('index','errors',{descending:true, limit:15});
+  var view_warnings = path.list('index','warnings',{descending:true, limit:15});
 
+  var accumLogVolPath = path.view('log-volume');
 
   var today = new Date();
   var curr_year = today.getFullYear();
   var curr_month = today.getMonth();
   var curr_date = today.getDate();
-
-  var last_year = curr_year - 1;
-  var next_month = curr_month + 1;
-
   var default_day = String(curr_year) + String(curr_month) + String(curr_date);
-  var default_start_key = String(last_year) + String(curr_month) + String(curr_date);
-  var default_end_key = String(curr_year) + String(next_month) + String(curr_date);
 
   var keys = {"keys": [{"date":default_day }]}
 
@@ -34,13 +27,11 @@ function(head, req) {
     // render the html head using a template
     var stash = {
       header : {
-        index : indexPath,
-        blogName : "Funky Log Seer",
-        errors_search : errorsSearchPath,
-        warnings_search: warningsSearchPath,
-        default_start_date: default_start_key,
-        default_end_date: default_end_key,
-        default_day: JSON.stringify(default_day)
+        app_name : "Funky Log Seer",
+        view_all : view_all,
+        view_errors : view_errors,
+        view_warnings : view_warnings,
+        default_day : default_day
       },
       javascript : {
         accumLogVolumePath : accumLogVolPath 
@@ -49,7 +40,6 @@ function(head, req) {
       db : req.path[0],
       design : req.path[2],
       assets : path.asset(),
-      onlykey : onlyKeyPath, 
       entries : List.withRows(function(row) {
         var entry = row.value;
         key = row.key;
@@ -58,13 +48,7 @@ function(head, req) {
           host : entry.Host,
           file : entry.File
         };
-      }),
-      older : function() {
-        return path.older(key);
-      },
-      "15" : path.limit(15),
-      "30" : path.limit(30),
-      "60" : path.limit(60)
+      })
     };
     return Mustache.to_html(ddoc.templates.index, stash, ddoc.templates.partials, List.send);
   });
