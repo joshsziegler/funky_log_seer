@@ -4,9 +4,9 @@ function(head, req) {
   var List = require("vendor/couchapp/lib/list");
   var path = require("vendor/couchapp/lib/path").init(req);
 
-  var view_all = path.list('index','all',{descending:true, limit:15});
-  var view_errors = path.list('index','errors',{descending:true, limit:15});
-  var view_warnings = path.list('index','warnings',{descending:true, limit:15});
+  var view_all = path.list('index','all',{descending:true, limit:25});
+  var view_errors = path.list('index','errors',{descending:true, limit:25});
+  var view_warnings = path.list('index','warnings',{descending:true, limit:25});
 
   var accumLogVolPath = path.view('log-volume');
 

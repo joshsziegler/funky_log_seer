@@ -60,7 +60,7 @@
         return url;
     }
     function isValidDate(input){
-        var validformat=/^\d{8}$/
+        var validformat=/^\d{6,8}$/
         var result = true;
         if (!validformat.test(input)){
             result = false;
@@ -101,10 +101,10 @@
         }
         /* Arg-specific logic  */
         if(arg_vals['autoupdate'] != ""){
-            if(arg_vals['autoupdate'] == "true"){
-                $("auto_update_on").addClass(selected_class);
+            if(arg_vals['autoupdate'] == "True"){
+                $(".auto_update_on").addClass(selected_class);
             }else{
-                $("auto_update_off").addClass(selected_class);
+                $(".auto_update_off").addClass(selected_class);
             }
         }
         if(arg_vals['limit'] != ""){
@@ -182,10 +182,12 @@ function update_log_volume_stats(){
     $(document).ready(function(){
         update_page(); /* Grab our first set of results */
         updateGuiBasedOnUrlArgs();
-        setInterval("update_page()", 10000); /* Update the results every 10 seconds */
-
+        if(gup('autoupdate') == "True"){
+            setInterval("update_page()", 10000); /* Update the results every 10 seconds */
+        }
+        /* Four digit year, month and day with no leading zeros */
         $('.singledatekey_datepicker').datepicker({ 
-            dateFormat: 'yymmdd',
+            dateFormat: 'yymd', 
             onClose: function(dateText, inst){
                 var date_key = $('.singledatekey_datepicker').val();
                 if(isValidDate(date_key) ){
