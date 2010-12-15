@@ -141,8 +141,8 @@ function get_stringified_keys(for_transport){
     /* TODO: These should come from the url like the other args! */
     /*  Or should they... grrrr. */
     var date_key = $('.singledatekey_datepicker').val();
-    var host_key = ""; 
-    var file_key = ""; 
+    var host_key = $('.host_key').val(); 
+    var file_key = $('.file_key').val(); 
     var stringified_keys = "";
     var keys = [{}];
 
@@ -225,7 +225,12 @@ function update_log_volume_stats(){
         });
         $('.host_key_change').live('click', function(e) {
             e.preventDefault(); 
-            $('.host_key').val($(this).text());
+            $('.host_key').val($(this).attr('href'));
+            window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
+        });
+        $('.file_key_change').live('click', function(e) {
+            e.preventDefault(); 
+            $('.file_key').val($(this).attr('href'));
             window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
         });
           
@@ -250,10 +255,6 @@ function update_log_volume_stats(){
         $('.auto_update_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('autoupdate', $(this).attr('href'));
-        });
-        $('.key_change').live('click', function(e) {
-            e.preventDefault();
-            window.location = new_setup_couchdb_url('key', $(this).attr('href'));
         });
         $('.limit_change').live('click', function(e) {
             e.preventDefault();
