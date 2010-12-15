@@ -132,36 +132,63 @@
             keys = keys.slice(1, keys.length -1);
             var keys_parsed = JSON.parse(keys);
             $('.singledatekey_datepicker').val(keys_parsed[0].date);
+            $('.host_key').val(keys_parsed[0].host);
+            $('.file_key').val(keys_parsed[0].file);
         }
     }
+
+function get_stringified_keys(for_transport){
+    /* TODO: These should come from the url like the other args! */
+    /*  Or should they... grrrr. */
+    var date_key = $('.singledatekey_datepicker').val();
+    var host_key = ""; 
+    var file_key = ""; 
+    var stringified_keys = "";
+    var keys = [{}];
+
+    if( isValidDate(date_key) ){
+        keys[0]["date"] = date_key;
+        if( host_key != null && host_key != ""){
+            keys[0]["host"] = host_key;
+            if( file_key != null && file_key != ""){
+                keys[0]["file"] = file_key;
+            }
+        }
+    }else{
+        console.log("Date is invalid!");
+    }
+    if(for_transport){
+        return JSON.stringify({"keys": keys});
+    }else{
+        return JSON.stringify(keys);
+    }
+}
+
 function update_page(){
     /* Function to read in current options and update the page's content by
     requesting a new one via AJAX request. 
     */
     update_log_volume_stats();
-    var date_key = $('.singledatekey_datepicker').val();
-    if(isValidDate(date_key) ){
-        var keys = JSON.stringify({"keys": [{"date": date_key}]});
-        $.ajax({
-            type: "POST",
-            contentType: "application/json",
-            url: window.location,
-            dataType: "html",
-            processData: false,
-            data: keys,
-            success: function(data){
-                var results = $(data).filter(".results").html();
-                if(results == "" || results == null){
-                    results = "Nothing to display...";    
-                }
-                $(".results").html(results);
-                console.log("Updated results...");
-
-            },error: function(XMLHttpRequest, textStatus, errorThrown){
-                alert( textStatus);
+    var keys = get_stringified_keys(true);
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: window.location,
+        dataType: "html",
+        processData: false,
+        data: keys,
+        success: function(data){
+            var results = $(data).filter(".results").html();
+            if(results == "" || results == null){
+                results = "Nothing to display...";    
             }
-        });
-    }
+            $(".results").html(results);
+            console.log("Updated results...");
+
+        },error: function(XMLHttpRequest, textStatus, errorThrown){
+            console.log( "Auto update failed: " + textStatus);
+        }
+    });
 }
 
 function update_log_volume_stats(){
@@ -195,6 +222,11 @@ function update_log_volume_stats(){
                      window.location = new_setup_couchdb_url("keys", keys);  
                 }
             }
+        });
+        $('.host_key_change').live('click', function(e) {
+            e.preventDefault(); 
+            $('.host_key').val($(this).text());
+            window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
         });
           
        /*  
