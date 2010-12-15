@@ -234,24 +234,6 @@ function update_log_volume_stats(){
             window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
         });
           
-       /*  
-        $('.start_key_datepicker').datepicker({ 
-            dateFormat: 'yymmdd',
-            onClose: function(dateText, inst){
-                if(isValidDate(dateText) && datePickersAreValid() ){
-                    window.location = new_setup_couchdb_url('startkey', dateText);
-                }
-            }
-        });
-        $('.end_key_datepicker').datepicker({ 
-            dateFormat: 'yymmdd', 
-            onClose: function(dateText, inst){
-                if(isValidDate(dateText) && datePickersAreValid() ){
-                    window.location = new_setup_couchdb_url('endkey', dateText);
-                }
-            }
-        });
-        */
         $('.auto_update_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('autoupdate', $(this).attr('href'));
@@ -264,25 +246,23 @@ function update_log_volume_stats(){
             e.preventDefault();
             window.location = new_setup_couchdb_url('descending', $(this).attr('href'));
         });
-        $('.clear_singledatekey').live('click', function(e) {
+        $('.clear_host_key').live('click', function(e) {
+            e.preventDefault();
+            $('.host_key').val('');
+            window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
+        });
+        $('.clear_file_key').live('click', function(e) {
+            e.preventDefault();
+            $('.file_key').val('');
+            window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
+        });
+        $('.clear_date_key').live('click', function(e) {
             e.preventDefault();
             today = new Date();
             cur_date = String(today.getFullYear()) + String(today.getMonth()) + String(today.getDate());
             $('.singledatekey_datepicker').val(cur_date);
-            window.location = new_setup_couchdb_url('endkey', '');
+            window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
         });
-        /*
-        $('.clear_start_key').live('click', function(e) {
-            e.preventDefault();
-            $('.start_key_datepicker').val('');
-            window.location = new_setup_couchdb_url('startkey', '');
-        });
-        $('.clear_end_key').live('click', function(e) {
-            e.preventDefault();
-            $('.end_key_datepicker').val('');
-            window.location = new_setup_couchdb_url('endkey', '');
-        });
-        */
         $('.skip_change').live('click', function(e) {
             e.preventDefault();
             var operation = $(this).attr('href');
