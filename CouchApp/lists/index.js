@@ -6,7 +6,7 @@ function(head, req) {
 
   var today = new Date();
   var curr_year = today.getFullYear();
-  var curr_month = today.getMonth();
+  var curr_month = today.getMonth() + 1; /* January == 0 */
   var curr_date = today.getDate();
   var default_day = String(curr_year) + String(curr_month) + String(curr_date);
   var keys = JSON.stringify([{"date":default_day }]);

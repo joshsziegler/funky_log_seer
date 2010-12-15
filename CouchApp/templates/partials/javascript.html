@@ -241,8 +241,12 @@ function update_log_volume_stats(){
         });
         $('.file_key_change').live('click', function(e) {
             e.preventDefault(); 
-            $('.file_key').val($(this).attr('href'));
-            window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
+            if($('.host_key').val() != ""){
+                $('.file_key').val($(this).attr('href'));
+                window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
+            }else{
+                alert("You must specify a host first!");
+            }
         });
           
         $('.auto_update_change').live('click', function(e) {
@@ -270,7 +274,7 @@ function update_log_volume_stats(){
         $('.clear_date_key').live('click', function(e) {
             e.preventDefault();
             today = new Date();
-            cur_date = String(today.getFullYear()) + String(today.getMonth()) + String(today.getDate());
+            cur_date = String(today.getFullYear()) + String(today.getMonth() +1) + String(today.getDate());
             $('.singledatekey_datepicker').val(cur_date);
             window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
         });
