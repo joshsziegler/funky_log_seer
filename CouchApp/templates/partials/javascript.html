@@ -13,6 +13,11 @@
             return results[1];
         }
     }
+    function get_page_name(){
+        pathArray = window.location.pathname.split( '/' );
+        return pathArray[pathArray.length - 1 ];
+    }
+
     var args = ['key', 'keys', 'startkey', 'endkey', 'limit', 'descending','skip', 'group', 'reduce']; 
     function new_setup_couchdb_url(arg_to_change, new_val_from_user){
         var arg_vals = [];
@@ -74,6 +79,20 @@
     function updateGuiBasedOnUrlArgs(){
         /* This is and ugly hack that I need to revist later. */
         var selected_class = 'ui_selected'; /* Class to add to UI elements that are selected */
+
+        /* Page-base options */
+        switch(get_page_name()){
+            case "all":
+                $(".view_all").addClass(selected_class);                
+                break;
+            case "warnings":
+                $(".view_warnings").addClass(selected_class);                
+                break;
+            case "errors":
+                $(".view_errors").addClass(selected_class);                
+                break;
+        }
+
         /* Get all current supported args */
         var arg_vals = [];
         for(x in args){
