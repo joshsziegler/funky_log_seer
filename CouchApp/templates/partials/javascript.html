@@ -200,6 +200,8 @@ function update_page(){
                 results = "Nothing to display...";    
             }
             $(".results").html(results);
+            /* Give a visual que that we updated the page..  */
+            $('.auto_update_on').effect("pulsate", { times:3 }, 1000);
             console.log("Updated results...");
 
         },error: function(XMLHttpRequest, textStatus, errorThrown){
