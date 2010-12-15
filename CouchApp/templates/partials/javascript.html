@@ -18,7 +18,8 @@
         return pathArray[pathArray.length - 1 ];
     }
 
-    var args = ['key', 'keys', 'startkey', 'endkey', 'limit', 'descending','skip', 'group', 'reduce']; 
+    var args = ['key', 'keys', 'startkey', 'endkey', 'limit',
+    'descending','skip', 'group', 'reduce', 'autoupdate']; 
     function new_setup_couchdb_url(arg_to_change, new_val_from_user){
         var arg_vals = [];
         var cur_val = "";
@@ -99,6 +100,13 @@
            arg_vals[args[x]] = gup(args[x]); 
         }
         /* Arg-specific logic  */
+        if(arg_vals['autoupdate'] != ""){
+            if(arg_vals['autoupdate'] == "true"){
+                $("auto_update_on").addClass(selected_class);
+            }else{
+                $("auto_update_off").addClass(selected_class);
+            }
+        }
         if(arg_vals['limit'] != ""){
             $('.limit_options > a').each(function(i, val){
                 if($(this).attr('href') == arg_vals['limit'] ){
@@ -205,6 +213,10 @@ function update_log_volume_stats(){
             }
         });
         */
+        $('.auto_update_change').live('click', function(e) {
+            e.preventDefault();
+            window.location = new_setup_couchdb_url('autoupdate', $(this).attr('href'));
+        });
         $('.key_change').live('click', function(e) {
             e.preventDefault();
             window.location = new_setup_couchdb_url('key', $(this).attr('href'));

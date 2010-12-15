@@ -200,7 +200,7 @@
   color:white;
   text-decoration:none;
   }
-  .log-volume-data, .key_start_end, .key_options, .limit_options, .descending_options, .skip_options, .startkey_options, .endkey_options, .accum-log-volume{
+  .log-volume-data, .key_start_end, .key_options, .limit_options, .descending_options, .skip_options, .startkey_options, .endkey_options, .accum-log-volume, .auto_update_options{
       float: left;
   }
   .group {
