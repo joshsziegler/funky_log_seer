@@ -28,7 +28,7 @@
             if(arg_to_change == args[x]){ 
                 /* this is the arg we want to change, so set it */
                 if(isNaN(new_val_from_user) || new_val_from_user == ''){
-                    if(new_val_from_user == "True" || new_val_from_user == "False"){
+                    if(new_val_from_user == "true" || new_val_from_user == "false"){
                         arg_vals[args[x]] = new_val_from_user;
                     }else{
                         if(new_val_from_user != ''){
@@ -112,7 +112,7 @@
          
         /* Arg-specific logic  */
         if(arg_vals['autoupdate'] != ""){
-            if(arg_vals['autoupdate'] == "True"){
+            if(arg_vals['autoupdate'] == "true"){
                 $(".auto_update_on").addClass(selected_class);
             }else{
                 $(".auto_update_off").addClass(selected_class);
@@ -126,7 +126,7 @@
             });
         }
         if(arg_vals['descending'] != ""){
-            if(arg_vals['descending'] == "False"){
+            if(arg_vals['descending'] == "false"){
                $('.ascending').addClass(selected_class); 
             }else {
                $('.descending').addClass(selected_class); 
@@ -220,7 +220,7 @@ function update_log_volume_stats(){
     $(document).ready(function(){
         updateGuiBasedOnUrlArgs();
         update_page(); /* Grab our first set of results */
-        if(gup('autoupdate') == "True"){
+        if(gup('autoupdate') == "true"){
             setInterval("update_page()", 10000); /* Update the results every 10 seconds */
         }
         /* Four digit year, month and day with no leading zeros */

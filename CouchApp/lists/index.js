@@ -4,19 +4,18 @@ function(head, req) {
   var List = require("vendor/couchapp/lib/list");
   var path = require("vendor/couchapp/lib/path").init(req);
 
-  var view_all = path.list('index','all',{descending:true, limit:25});
-  var view_errors = path.list('index','errors',{descending:true, limit:25});
-  var view_warnings = path.list('index','warnings',{descending:true, limit:25});
-
-  var accumLogVolPath = path.view('log-volume');
-
   var today = new Date();
   var curr_year = today.getFullYear();
   var curr_month = today.getMonth();
   var curr_date = today.getDate();
   var default_day = String(curr_year) + String(curr_month) + String(curr_date);
+  var keys = JSON.stringify([{"date":default_day }]);
 
-  var keys = {"keys": [{"date":default_day }]}
+  var view_all = path.list('index','all',{descending:true, limit:25, autoupdate:true});
+  var view_errors = path.list('index','errors',{descending:true, limit:25, autoupdate:true});
+  var view_warnings = path.list('index','warnings',{descending:true, limit:25, autoupdate:true});
+
+  var accumLogVolPath = path.view('log-volume');
 
   var path_parts = req.path;
   // The provides function serves the format the client requests.
