@@ -1,4 +1,10 @@
 <script type="text/javascript">
+    function get_todays_date_key(){
+        today = new Date();
+        cur_date = String(today.getFullYear()) + String(today.getMonth() +1) + String(today.getDate());
+        return cur_date;
+    }
+
     function gup( name ){
         /*  To use this, see the following */
         /* http://www.foo.com/index.html?bob=123&frank=321&tom=213#top */
@@ -203,14 +209,28 @@ function update_page(){
 }
 
 function update_log_volume_stats(){
+    /*  Get accumulative log volume */
     $.ajax({
         url: '{{ accumLogVolumePath }}',
         success: function(data) {
             var x = JSON.parse(data);
             accum_bytes = x["rows"][0].value;
             accum_GB = accum_bytes / 1073741824;
-            accum_GB_rounded = Math.round(accum_GB*100)/100
-            $('.accum-log-volume').html("Total Size of Logs: " + accum_GB_rounded + " GB");
+            accum_GB_rounded = Math.round(accum_GB*100)/100;
+            $('.accum-log-volume').html("Size of All Logs: " + accum_GB_rounded + " GB");
+        }
+    });
+
+    /* Get todays log volume  */
+    var today = get_todays_date_key();
+    var new_url = "{{ accumLogVolumePath }}" + "?key=\"" + today + "\"";
+    $.ajax({
+        url: new_url,
+        success: function(data) {
+            var x = JSON.parse(data);
+            accum_bytes = x["rows"][0].value;
+            accum_bytes_rounded = Math.round(accum_bytes*100)/100;
+            $('.todays-log-volume').html("Size of Todays Logs: " + accum_bytes_rounded + " b");
         }
     });
 }
@@ -273,8 +293,7 @@ function update_log_volume_stats(){
         });
         $('.clear_date_key').live('click', function(e) {
             e.preventDefault();
-            today = new Date();
-            cur_date = String(today.getFullYear()) + String(today.getMonth() +1) + String(today.getDate());
+            cur_date = get_todays_date_key(); 
             $('.singledatekey_datepicker').val(cur_date);
             window.location = new_setup_couchdb_url("keys", get_stringified_keys(false));
         });
