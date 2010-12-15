@@ -212,6 +212,15 @@
       margin: 5px;
       padding: 4px;
   }
+  .group_w_input {
+      border:1px solid #DDDDDD;
+      font-family:'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
+      font-size:11px;
+      min-height:20px;
+      min-width:60px;
+      margin: 5px;
+      padding: 2.5px;
+  }
   .ctrl_label {
       font-size: 13px;
       margin-right: 10px;
