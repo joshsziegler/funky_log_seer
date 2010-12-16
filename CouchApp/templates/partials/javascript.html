@@ -228,7 +228,11 @@ function update_log_volume_stats(){
         url: '{{ accumLogVolumePath }}',
         success: function(data) {
             var x = JSON.parse(data);
-            accum_bytes = x["rows"][0].value;
+            try{
+                accum_bytes = x["rows"][0].value;
+            }catch(err){
+                accum_bytes = 0;
+            }
             accum_GB = accum_bytes / 1073741824;
             accum_GB_rounded = Math.round(accum_GB*100)/100;
             $('.accum-log-volume').html("Size of All Logs: " + accum_GB_rounded + " GB");
@@ -237,12 +241,16 @@ function update_log_volume_stats(){
 
     /* Get todays log volume  */
     var today = get_todays_date_key();
-    var new_url = "{{ accumLogVolumePath }}" + "?key=\"" + today + "\"";
+    var new_url = '{{ accumLogVolumePath }}' + '?key=\"' + today + '\"';
     $.ajax({
         url: new_url,
         success: function(data) {
             var x = JSON.parse(data);
-            accum_bytes = x["rows"][0].value;
+            try{
+                accum_bytes = x["rows"][0].value;
+            }catch(err){
+                accum_bytes = 0;
+            }
             accum_bytes_rounded = Math.round(accum_bytes*100)/100;
             $('.todays-log-volume').html("Size of Todays Logs: " + accum_bytes_rounded + " b");
         }
@@ -255,7 +263,7 @@ function update_log_volume_stats(){
         /*  TEST BEGIN  */
         var then = new Date();
         then.setDate (then.getDate() - 16);
-        alert(then.toDateString());
+        console.log(then.toDateString());
         /*  TEST END */
         updateGuiBasedOnUrlArgs();
         update_page(); /* Grab our first set of results */
