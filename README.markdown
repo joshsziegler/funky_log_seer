@@ -23,5 +23,4 @@ along with Funky Log Seer (FLS). If not, see <http://www.gnu.org/licenses/>.
 1 Host view (in json)  
 2 Files view (in json)  
 3 Setup error/warning graphs using flot: http://code.google.com/p/flot/  
-4 Add log-volume for today in bytes?  
   
