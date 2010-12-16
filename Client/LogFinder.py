@@ -20,6 +20,8 @@
 import fnmatch
 import os
 
+default_log_dir = "/var/log"
+
 matches = []
 for root, dirnames, filenames in os.walk('/'):
   for filename in fnmatch.filter(filenames, '*.log'):
@@ -27,6 +29,10 @@ for root, dirnames, filenames in os.walk('/'):
 
 f = open('logfiles', 'w')
 for log in matches:
+    f.write("#" + log + "\n")
+
+# Add everything in the log directory
+for log in os.listdir(default_log_dir):
     f.write("#" + log + "\n")
 
 f.close()
