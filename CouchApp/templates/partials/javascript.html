@@ -235,7 +235,7 @@ function update_log_volume_stats(){
             }
             accum_GB = accum_bytes / 1073741824;
             accum_GB_rounded = Math.round(accum_GB*100)/100;
-            $('.accum-log-volume').html("Size of All Logs: " + accum_GB_rounded + " GB");
+            $('.accum-log-volume').text("All: " + accum_GB_rounded + " GB");
         }
     });
 
@@ -254,14 +254,34 @@ function update_log_volume_stats(){
                 accum_bytes = 0;
             }
             accum_bytes_rounded = Math.round(accum_bytes*100)/100;
-            $('.todays-log-volume').html("Size of Todays Logs: " + accum_bytes_rounded + " b");
+            $('.todays-log-volume').text("Today: " + accum_bytes_rounded + " b");
         }
     });
-    get_todays_log_volume_by_hour(9);
-    get_todays_log_volume_by_hour(10);
-    get_todays_log_volume_by_hour(11);
-    get_todays_log_volume_by_hour(12);
+    /* TESTING - REMOVE THIS  (START) */
+    var today = get_todays_date_key(); 
+    var date = new Date();
+    /*  Note: we purposely don't correct the getHours val (starts at zero) */
+    /*  BUG: This breaks when checking at one in the morning! */
+    var data = JSON.stringify({"keys":[{"date":today, "hour": date.getHours()}]});
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: '{{ volume_by_hour }}' + '?group=true',
+        data: data,
+        success: function(data){
+            var x = JSON.parse(data);
+            try{
+                accum_bytes = x["rows"][0].value;
+            }catch(err){
+                accum_bytes = 0;
+            }
+            accum_bytes_rounded = Math.round(accum_bytes*100)/100;
+            $('.last-hours-log-volume').html("Last Hour: " + accum_bytes_rounded + " b"); 
+        }
+    });
+    /* TESTING - REMOVE THIS (END) */
 }
+
 function get_todays_log_volume_by_hour(hour){
     /* Hour should be an int between 1 and 24 */
     var today = get_todays_date_key(); 
@@ -275,6 +295,31 @@ function get_todays_log_volume_by_hour(hour){
             console.log(hour+ data);
         }
     });
+}
+function set_activity_data(){
+    /*  Testing */
+    var data =  [
+                {
+                    label: 'Volume (bytes)',
+                    data: [[0, 5], [1,20]],
+                },
+                {
+                    label: 'Warnings',
+                    data: [[1,80],[2,32]],
+                },
+                {
+                    label: 'Errors',
+                    data: [[2, 5]],
+                }
+            ];
+    $("#graph_data").text(JSON.stringify(data));    
+
+}
+
+function update_activity_graph(){
+    /*  Testing */
+    var data = JSON.parse($("#graph_data").text());
+    $.plot($(".todays_graph"), data, {});
 }
 
     $(document).ready(function(){

@@ -200,7 +200,7 @@
   color:white;
   text-decoration:none;
   }
-  .data_graph, .host_key_options, .file_key_options, .log-volume-data, .key_start_end, .key_options, .limit_options, .descending_options, .skip_options, .startkey_options, .endkey_options, .accum-log-volume, .auto_update_options{
+  .todays_graph, .host_key_options, .file_key_options, .log-volume-data, .key_start_end, .key_options, .limit_options, .descending_options, .skip_options, .startkey_options, .endkey_options, .auto_update_options{
       float: left;
   }
   .group {
@@ -243,7 +243,10 @@
   .host_key, .file_key{
       width: 100px;
   }
-  .data_graph{
+  #graph_data{
+      display: none;
+  }
+  .todays_graph{
       height: 50px;
       width: 600px;
   }
