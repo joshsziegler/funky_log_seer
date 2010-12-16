@@ -195,7 +195,7 @@ function get_stringified_keys(for_transport){
             }
         }
     }else{
-        console.log("Date is invalid!");
+        //console.log("Date is invalid!");
     }
     if(for_transport){
         return JSON.stringify({"keys": keys});
@@ -226,10 +226,10 @@ function update_page(){
             update_results_based_on_url_args();
             /* Give a visual que that we updated the page..  */
             $('.auto_update_on').effect("pulsate", { times:3 }, 1000);
-            console.log("Updated results...");
+            //console.log("Updated results...");
 
         },error: function(XMLHttpRequest, textStatus, errorThrown){
-            console.log( "Auto update failed: " + textStatus);
+            //console.log( "Auto update failed: " + textStatus);
         }
     });
 }
@@ -305,7 +305,7 @@ function get_todays_log_volume_by_hour(hour){
         url: '{{ volume_by_hour }}' + '?group=true',
         data: data,
         success: function(data){
-            console.log(hour+ data);
+            //console.log(hour+ data);
         }
     });
 }
@@ -339,7 +339,7 @@ function update_activity_graph(){
         /*  TEST BEGIN  */
         var then = new Date();
         then.setDate (then.getDate() - 16);
-        console.log(then.toDateString());
+        //console.log(then.toDateString());
         /*  TEST END */
         updateGuiBasedOnUrlArgs();
         update_page(); /* Grab our first set of results */

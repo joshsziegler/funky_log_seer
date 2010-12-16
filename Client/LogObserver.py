@@ -28,7 +28,7 @@ def get_host_name():
     import platform 
     return platform.node()
 
-SERVERS = ["localhost:5984"]
+SERVERS = ["aeon.findlay.edu:5984"]
 
 HOST = get_host_name() 
 SERVER = "localhost"
