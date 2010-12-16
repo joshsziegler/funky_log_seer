@@ -257,9 +257,25 @@ function update_log_volume_stats(){
             $('.todays-log-volume').html("Size of Todays Logs: " + accum_bytes_rounded + " b");
         }
     });
+    get_todays_log_volume_by_hour(9);
+    get_todays_log_volume_by_hour(10);
+    get_todays_log_volume_by_hour(11);
+    get_todays_log_volume_by_hour(12);
 }
-     
-
+function get_todays_log_volume_by_hour(hour){
+    /* Hour should be an int between 1 and 24 */
+    var today = get_todays_date_key(); 
+    var data = JSON.stringify({"keys":[{"date":today, "hour": hour}]});
+    $.ajax({
+        type: "POST",
+        contentType: "application/json",
+        url: '{{ volume_by_hour }}' + '?group=true',
+        data: data,
+        success: function(data){
+            console.log(hour+ data);
+        }
+    });
+}
 
     $(document).ready(function(){
         /*  TEST BEGIN  */
