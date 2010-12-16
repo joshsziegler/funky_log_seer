@@ -1,8 +1,20 @@
 <script type="text/javascript">
     function get_todays_date_key(){
-        today = new Date();
-        cur_date = String(today.getFullYear()) + String(today.getMonth() +1) + String(today.getDate());
+        var today = new Date();
+        var cur_date = String(today.getFullYear()) + String(today.getMonth() +1) + String(today.getDate());
         return cur_date;
+    }
+    function transform_date_to_date_key(date){
+        var today = new Date();
+        var date_key = String(today.getFullYear()) + String(today.getMonth() +1) + String(today.getDate());
+        return date_key;
+    }
+    function get_date_key_for(days_ago, hours_ago){
+        var d = new Date();
+        d.setHours(d.getHours() + 1 - hours_ago);
+        d.setDate(d.getDate() - days_ago); 
+        var date_key = String(d.getFullYear()) + String(d.getMonth() +1) + String(d.getDate());
+        return [date_key, d.getHours()];
     }
 
     function gup( name ){
@@ -258,11 +270,12 @@ function update_log_volume_stats(){
         }
     });
     /* TESTING - REMOVE THIS  (START) */
-    var today = get_todays_date_key(); 
+    var date_keys = get_date_key_for(0, 1);
+    var last_hour = transform_date_to_date_key(); 
     var date = new Date();
     /*  Note: we purposely don't correct the getHours val (starts at zero) */
     /*  BUG: This breaks when checking at one in the morning! */
-    var data = JSON.stringify({"keys":[{"date":today, "hour": date.getHours()}]});
+    var data = JSON.stringify({"keys":[{"date":date_keys[0], "hour": date_keys[1]}]});
     $.ajax({
         type: "POST",
         contentType: "application/json",
