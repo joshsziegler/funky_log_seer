@@ -235,6 +235,7 @@
       */
       color: #F0F0F0 !important;
       background-color: #333333 !important;
+      padding: 5px !important;
   }
   .datepicker{
       width: 70px;
