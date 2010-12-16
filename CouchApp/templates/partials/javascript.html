@@ -225,7 +225,7 @@ function update_page(){
 function update_log_volume_stats(){
     /*  Get accumulative log volume */
     $.ajax({
-        url: '{{ accumLogVolumePath }}',
+        url: '{{ volume_by_day }}',
         success: function(data) {
             var x = JSON.parse(data);
             try{
@@ -241,9 +241,11 @@ function update_log_volume_stats(){
 
     /* Get todays log volume  */
     var today = get_todays_date_key();
-    var new_url = '{{ accumLogVolumePath }}' + '?key=\"' + today + '\"';
     $.ajax({
-        url: new_url,
+        type: "POST",
+        contentType: "application/json",
+        url: '{{ volume_by_day }}' + '?group=true',
+        data: JSON.stringify({"keys":[{"date":today}]}),
         success: function(data) {
             var x = JSON.parse(data);
             try{

@@ -4,6 +4,5 @@ function(doc) {
         var est_size_in_bytes = (doc.Content.length * 2);
         date_key = String(doc.Year) + String(doc.Month) + String(doc.Day);
         emit({date: date_key}, est_size_in_bytes);
-        emit({date:date_key, hour:doc.Hour}, est_size_in_bytes);
     }
 }

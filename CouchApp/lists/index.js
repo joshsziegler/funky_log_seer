@@ -15,7 +15,8 @@ function(head, req) {
   var view_errors = path.list('index','errors',{descending:true, limit:25, autoupdate:true});
   var view_warnings = path.list('index','warnings',{descending:true, limit:25, autoupdate:true});
 
-  var accumLogVolPath = path.view('log-volume');
+  var volume_by_day = path.view('volume-by-day');
+  var volume_by_hour = path.view('volume-by-hour');
 
   var path_parts = req.path;
   // The provides function serves the format the client requests.
@@ -33,7 +34,9 @@ function(head, req) {
         default_day : default_day
       },
       javascript : {
-        accumLogVolumePath : accumLogVolPath 
+        volume_by_day : volume_by_day,
+        volume_by_hour : volume_by_hour
+
       },
       scripts : {},
       db : req.path[0],
