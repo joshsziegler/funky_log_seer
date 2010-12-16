@@ -33,6 +33,6 @@ for log in matches:
 
 # Add everything in the log directory
 for log in os.listdir(default_log_dir):
-    f.write("#" + default_log_dir + log + "\n")
+    f.write("#" + default_log_dir + "/"+ log + "\n")
 
 f.close()
