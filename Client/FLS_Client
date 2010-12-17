@@ -1,5 +1,6 @@
 #!/bin/sh
 # Rudimentary initd script
+# This is meant as an example or a test script!
 
 # You will need to change these to your match your environment
 prog=/root/funky_log_seer/Client/LogObserver.py
@@ -7,6 +8,8 @@ logfiles=/root/funky_log_seer/Client/logfiles
 
 start() {
     echo -n $"Starting $prog: "
+    # Note you may have to change this to "python26" if you have
+    # an older default python
     python $prog "$logfiles"
 }
 
