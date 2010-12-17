@@ -31,7 +31,6 @@ def get_host_name():
 SERVERS = ["aeon.findlay.edu:5984"]
 
 HOST = get_host_name() 
-SERVER = "localhost"
 DATABASE_NAME = "logs"
 LOG_WATCH_LIST_PATH = "logfiles"
 
@@ -134,6 +133,26 @@ class LogObserver(object):
                 print contents
 
 if __name__ == "__main__":
+    # Attempts to daemonize this process
+    try:
+        pid = os.fork()
+        if pid > 0:
+            sys.exit(0)
+    except OSError, e:
+        sys.exit(1)
+
+    os.chdir("/")
+    os.setsid()
+    os.umask(0)
+
+    try:
+        pid = os.fork()
+        if pid > 0:
+            sys.exit(0)
+    except OSError, e:
+        sys.exit(1)
+    
+    # Start the LogObserver
     logs = get_logs_to_watch(LOG_WATCH_LIST_PATH)
 
     lo = LogObserver(HOST, SERVERS, DATABASE_NAME, logs)
