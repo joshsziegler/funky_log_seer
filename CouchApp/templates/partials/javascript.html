@@ -209,11 +209,14 @@ function update_page(){
     requesting a new one via AJAX request. 
     */
     update_log_volume_stats();
+    // TODO: Fix this url 
+    var results_url = String(window.location).replace( "index/" +
+    get_page_name() + '?',"all/" + get_page_name() + "?");
     var keys = get_stringified_keys(true);
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: window.location,
+        url: results_url,
         dataType: "html",
         processData: false,
         data: keys,

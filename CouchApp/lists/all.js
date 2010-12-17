@@ -26,6 +26,6 @@ function(head, req) {
         };
       })
     };
-    return Mustache.to_html(ddoc.templates.all, stash, ddoc.templates.partials, List.send);
+    return Mustache.to_html(ddoc.templates.results, stash, ddoc.templates.partials, List.send);
   });
 };
