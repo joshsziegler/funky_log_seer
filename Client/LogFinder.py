@@ -32,8 +32,8 @@ for log in matches:
     f.write("#" + log + "\n")
 
 # Add everything in the log directory
-for root, dirs, files in os.walk(default_log_dir):
+for root, dirs, files in os.walk(DEFAULT_LOG_DIR):
     for log in files:
-        f.write("#" + DEFAULT_LOG_DIR + "/"+ log + "\n")
+        f.write("#" + os.path.join(root, log) + "\n")
 
 f.close()

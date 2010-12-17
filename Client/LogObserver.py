@@ -20,7 +20,7 @@
 import time
 import sys
 import os  
-import json
+import json # This requires Python 2.6
 import urllib2
 import datetime
 
@@ -28,11 +28,10 @@ def get_host_name():
     import platform 
     return platform.node()
 
+# You can list multiple CouchDB servers if you need redundancy
 SERVERS = ["aeon.findlay.edu:5984"]
-
 HOST = get_host_name() 
 DATABASE_NAME = "logs"
-LOG_WATCH_LIST_PATH = "logfiles"
 
 
 def get_logs_to_watch(log_watch_list_path):
@@ -133,6 +132,10 @@ class LogObserver(object):
                 print contents
 
 if __name__ == "__main__":
+    # Try to get the logfiles location
+    try:
+        LOG_WATCH_LIST_PATH = sys.argv[1] 
+
     # Attempts to daemonize this process
     try:
         pid = os.fork()

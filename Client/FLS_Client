@@ -1,8 +1,7 @@
 #!/bin/sh
 # Rudimentary initd script
 
-. /etc/inid.d/functions
-
+# You will need to change these to your match your environment
 prog=/root/funky_log_seer/Client/LogObserver.py
 logfiles=/root/funky_log_seer/Client/logfiles
 
