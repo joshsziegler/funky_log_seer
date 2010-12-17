@@ -1,0 +1,24 @@
+#!/bin/sh
+# Rudimentary initd script
+
+. /etc/inid.d/functions
+
+prog=/root/funky_log_seer/Client/LogObserver.py
+logfiles=/root/funky_log_seer/Client/logfiles
+
+start() {
+    echo -n $"Starting $prog: "
+    python $prog "$logfiles"
+}
+
+case $1 in
+    start)
+        start
+    ;;
+    *)
+
+    echo $"Usage: $prog {start}"
+    exit 3
+esac
+
+exit 0
