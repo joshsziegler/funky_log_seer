@@ -20,7 +20,7 @@
 import fnmatch
 import os
 
-default_log_dir = "/var/log"
+DEFAULT_LOG_DIR = "/var/log"
 
 matches = []
 for root, dirnames, filenames in os.walk('/'):
@@ -32,7 +32,8 @@ for log in matches:
     f.write("#" + log + "\n")
 
 # Add everything in the log directory
-for log in os.listdir(default_log_dir):
-    f.write("#" + default_log_dir + "/"+ log + "\n")
+for root, dirs, files in os.walk(default_log_dir):
+    for log in files:
+        f.write("#" + DEFAULT_LOG_DIR + "/"+ log + "\n")
 
 f.close()
