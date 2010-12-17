@@ -21,6 +21,7 @@ import time
 import sys
 import os  
 import json # This requires Python 2.6
+#import simplejson as json # Should work for Python 2.4 
 import urllib2
 import datetime
 
@@ -135,6 +136,9 @@ if __name__ == "__main__":
     # Try to get the logfiles location
     try:
         LOG_WATCH_LIST_PATH = sys.argv[1] 
+    except:
+        print "Usage: LogObserver.py LOG_WATCH_LIST_PATH" 
+        sys.exit(1)
 
     # Attempts to daemonize this process
     try:
