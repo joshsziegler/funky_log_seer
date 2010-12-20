@@ -20,8 +20,10 @@
 import time
 import sys
 import os  
-import json # This requires Python 2.6
-#import simplejson as json # Should work for Python 2.4 
+try:
+    import json # This requires Python 2.6
+except ImportError:
+    import simplejson as json # Should work for Python 2.4 
 import urllib2
 import datetime
 
