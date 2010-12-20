@@ -234,7 +234,8 @@ function update_page(){
         data: keys,
         success: function(data){
             var results = $(data).filter(".results").html();
-            if(results == "" || results == null){
+            /*  This is a hack based on our current template */
+            if($(results).filter('.entries').text() == "\n        "){
                 results = "Nothing to display...";    
             }
             $(".results").html(results);
