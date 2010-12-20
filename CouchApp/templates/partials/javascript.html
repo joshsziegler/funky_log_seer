@@ -281,8 +281,9 @@ function update_log_volume_stats(){
             }catch(err){
                 accum_bytes = 0;
             }
-            accum_bytes_rounded = Math.round(accum_bytes*100)/100;
-            $('.todays-log-volume').text("Today: " + accum_bytes_rounded + " b");
+            accum_mb = accum_bytes / 1048576;
+            accum_mb_rounded = Math.round(accum_mb*100)/100;
+            $('.todays-log-volume').text("Today: " + accum_mb_rounded + " MB");
         }
     });
     /* TESTING - REMOVE THIS  (START) */
@@ -304,8 +305,9 @@ function update_log_volume_stats(){
             }catch(err){
                 accum_bytes = 0;
             }
-            accum_bytes_rounded = Math.round(accum_bytes*100)/100;
-            $('.last-hours-log-volume').html("Last Hour: " + accum_bytes_rounded + " b"); 
+            accum_kb = accum_bytes / 1024;
+            accum_kb_rounded = Math.round(accum_kb*100)/100;
+            $('.last-hours-log-volume').html("Last Hour: " + accum_kb_rounded + " kb"); 
         }
     });
     /* TESTING - REMOVE THIS (END) */
