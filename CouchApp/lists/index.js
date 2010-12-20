@@ -18,6 +18,8 @@ function(head, req) {
   var volume_by_day = path.view('volume-by-day');
   var volume_by_hour = path.view('volume-by-hour');
 
+  var host_key_options_path = path.view('hosts');
+
   var path_parts = req.path;
   // The provides function serves the format the client requests.
   // The first matching format is sent, so reordering functions changes
@@ -35,7 +37,8 @@ function(head, req) {
       },
       javascript : {
         volume_by_day : volume_by_day,
-        volume_by_hour : volume_by_hour
+        volume_by_hour : volume_by_hour,
+        host_key_options_path : host_key_options_path
 
       },
       scripts : {},

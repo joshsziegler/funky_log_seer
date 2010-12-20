@@ -316,6 +316,19 @@ function update_log_volume_stats(){
     /* TESTING - REMOVE THIS (END) */
 }
 
+function load_host_key_options(){
+    $.ajax({
+        url: '{{ host_key_options_path }}',
+        success: function(data){
+            var test = JSON.parse(data);
+            var hosts = test.rows[0].value;
+            for (h in hosts){
+                console.log(h[0]);
+            }
+        }
+    });
+}
+
 function get_todays_log_volume_by_hour(hour){
     /* Hour should be an int between 1 and 24 */
     var today = get_todays_date_key(); 
@@ -357,11 +370,7 @@ function update_activity_graph(){
 }
 
     $(document).ready(function(){
-        /*  TEST BEGIN  */
-        var then = new Date();
-        then.setDate (then.getDate() - 16);
-        //console.log(then.toDateString());
-        /*  TEST END */
+        load_host_key_options();
         updateGuiBasedOnUrlArgs();
         update_page(); /* Grab our first set of results */
         if(gup('autoupdate') == "true"){
