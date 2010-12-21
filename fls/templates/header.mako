@@ -6,7 +6,7 @@
         <div class="group">
             <span class="ctrl_label">Host:</span>
             <select name="file" class="host_key_selector">
-                <option value=""></option>
+                <option value="">all</option>
                 % for file in file_options.keys():
                       <option value="${file}">${file}</option>
                 % endfor
