@@ -9,6 +9,7 @@
     <script type="text/javascript" src="js/get_form_vals.js"></script>
     <script type="text/javascript" src="js/update_page.js"></script>
     <script type="text/javascript" src="js/setup_host_shortcuts.js"></script>
+    <script type="text/javascript" src="js/setup_search_shortcuts.js"></script>
   </head>
   <body>
       <%include file="/js_on_page_load.mako"/>
@@ -16,7 +17,7 @@
       <div id="results">
           <ul class="entries">
               % for line in log_results:
-                  <li><a href="#" class="">${line[0]}</a>
+                  <li><a href="#" class="search_shortcut">${line[0]}</a>
                   <a href="#" class="host_key_change">${line[1]}</a> : ${line[2]}</li>
               % endfor
           </ul>
