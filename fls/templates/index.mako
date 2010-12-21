@@ -8,6 +8,7 @@
     <script type="text/javascript" src="js/get_url_arg.js"></script>
     <script type="text/javascript" src="js/get_form_vals.js"></script>
     <script type="text/javascript" src="js/update_page.js"></script>
+    <script type="text/javascript" src="js/setup_host_shortcuts.js"></script>
   </head>
   <body>
       <%include file="/js_on_page_load.mako"/>
