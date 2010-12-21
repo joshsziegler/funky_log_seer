@@ -24,14 +24,17 @@ def get_log_files():
 def grep(pattern, file_obj, include_line_nums=False):
     # TODO: Add option to flip these results around
     import re
-    grepper = re.compile(pattern)
-    for line_num, line in enumerate(file_obj):
-        line =  line.replace("\n", "")
-        if grepper.search(line):
-            if include_line_nums:
-                yield (line_num, line)
-            else:
-                yield line
+    try:
+        grepper = re.compile(pattern)
+        for line_num, line in enumerate(file_obj):
+            line =  line.replace("\n", "")
+            if grepper.search(line):
+                if include_line_nums:
+                    yield (line_num, line)
+                else:
+                    yield line
+    except Exception, e:
+         print "<p>Error in regex!</p>" 
 
 def is_number(s):
     try:
@@ -68,7 +71,7 @@ def main():
                     srch_rslt.append((file_name, res))
                 else:
                     break
-            ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="test.py", log_results=srch_rslt, file_options=log_files)
+            ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
         else: # TODO: Make this the same as above, using the list files_to_search
             files_to_search = log_files.keys()
             srch_rslt = []
@@ -85,9 +88,9 @@ def main():
                 else:
                     break
             
-            ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="test.py", log_results=srch_rslt, file_options=log_files)
+            ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
     else:
-        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="test.py", log_results=[], file_options=log_files)
+        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=[], file_options=log_files)
 
     try:
         mylkup = TemplateLookup(directories=['templates/'])
