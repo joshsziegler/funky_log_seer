@@ -1,7 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python26
 
 import cgi
 import sys
+
+sys.path.append('/usr/lib/python2.4/site-packages/')
+sys.path.append('/usr/lib64/python2.4/site-packages/')
 from mako.lookup import TemplateLookup
 from mako.template import Template
 from mako.runtime import Context
@@ -9,6 +12,34 @@ from StringIO import StringIO
 from mako import exceptions
 
 LOG_DIR = "/var/log/remotesystems/"
+
+def reversed_lines(file):
+    """Generate the lines of file in reverse order.
+        
+       http://stackoverflow.com/questions/260273/most-efficient-way-to-search-the-last-x-lines-of-a-file-in-python/260433#260433
+    """
+    tail = []           # Tail of the line whose head is not yet read.
+    for block in reversed_blocks(file):
+        # A line is a list of strings to avoid quadratic concatenation.
+        # (And trying to avoid 1-element lists would complicate the code.)
+        linelists = [[line] for line in block.splitlines()]
+        linelists[-1].extend(tail)
+        for linelist in reversed(linelists[1:]):
+            yield ''.join(linelist)
+        tail = linelists[0]
+    if tail: yield ''.join(tail)
+
+def reversed_blocks(file, blocksize=4096):
+    "Generate blocks of file's contents in reverse order."
+    import os
+
+    file.seek(0, os.SEEK_END)
+    here = file.tell()
+    while 0 < here:
+        delta = min(blocksize, here)
+        file.seek(here - delta, os.SEEK_SET)
+        yield file.read(delta)
+        here -= delta
 
 def get_log_files():
     """Returns array of tuples with the log's name and path.
@@ -21,9 +52,12 @@ def get_log_files():
             results[log_name] =  os.path.join(root, log)
     return results
 
-def grep(pattern, file_obj, include_line_nums=False):
+def grep(pattern, file_obj, top_to_bottom=False, include_line_nums=False):
     # TODO: Add option to flip these results around
     import re
+    if not top_to_bottom:
+        file_obj = reversed_lines(file_obj)
+
     try:
         grepper = re.compile(pattern)
         for line_num, line in enumerate(file_obj):
@@ -35,6 +69,7 @@ def grep(pattern, file_obj, include_line_nums=False):
                     yield line
     except Exception, e:
          print "<p>Error in regex!</p>" 
+         print e
 
 def is_number(s):
     try:
@@ -55,18 +90,24 @@ def main():
 
     log_files = get_log_files()
 
+    limit = 25
+    top_to_bottom = False
+
     if form.has_key("limit"):
-        limit = form.getvalue("limit")
+        limit = int(form.getvalue("limit"))
         if not is_number(limit) or limit < 0 or limit > 501:
             limit = 25
 
+    if form.has_key("toptobottom") and form.getvalue("toptobottom") == "true":
+        top_to_bottom = True 
+            
     if form.has_key("regex") and form.getvalue("regex") != "":
         regex = form.getvalue("regex")
         if form.has_key("file") and form.getvalue("file") != "":
             file_name = form.getvalue("file")
             file_path = log_files[file_name]
             srch_rslt = []
-            for count, res in  enumerate(grep(regex, file(file_path, 'r'))):
+            for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
                 if count < limit:
                     srch_rslt.append((file_name, res))
                 else:
@@ -79,7 +120,7 @@ def main():
             for file_name in files_to_search:
                 if count < limit:
                     file_path = log_files[file_name]
-                    for res in grep(regex, file(file_path,'r')):
+                    for res in grep(regex, file(file_path,'r'), top_to_bottom):
                         if count < limit:
                             srch_rslt.append((file_name, res))
                             count += 1
