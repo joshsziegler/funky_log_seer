@@ -15,7 +15,7 @@
       <div id="results">
           <ul class="entries">
               % for line in log_results:
-                  <li>${line[0]} - ${line[1]}</li>
+                  <li><a href="#" class="host_key_change">${line[0]}</a> : ${line[1]}</li>
               % endfor
           </ul>
       </div>
