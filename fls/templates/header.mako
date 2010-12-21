@@ -19,7 +19,7 @@
         </div>
         <div class="group">
             <span class="ctrl_label">Update:</span>
-            <input type="checkbox" name="autoupdate" value="false" />
+            <input type="checkbox" name="autoupdate" value="true" />
         </div>
         <div class="group">
             <span class="ctrl_label">Limit:</span>
@@ -31,7 +31,7 @@
         </div>
         <div class="group">
             <span class="ctrl_label">Ascending:</span>
-            <input type="checkbox" name="ascending" value="false" />
+            <input type="checkbox" name="ascending" value="true" />
         </div>
         <div class="">
         </div>
