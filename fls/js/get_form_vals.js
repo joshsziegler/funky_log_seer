@@ -9,6 +9,7 @@ function get_form_vals(){
         $('select[name="file"]').val(file);
     }
     if(regex != ""){
+        regex = regex.replace(/\+/g, ' ');
         $('input[name="regex"]').val(regex);
     }
     if(limit!= ""){
