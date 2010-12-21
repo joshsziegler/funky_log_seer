@@ -3,7 +3,7 @@
       <h1><a href="#">${app_name}</a></h1>
     </div>
     <form name="search" action="${search_page}" method="get" class="search">
-        <div class="">
+        <div class="group">
             <span class="ctrl_label">Host:</span>
             <select name="file" class="">
                 <option value=""></option>
@@ -13,15 +13,15 @@
             </select>
             <!--  TODO: Look into enabling multiple selections -->
         </div>
-        <div class="">
+        <div class="group">
             <span class="ctrl_label">Search:</span>
             <input type="text" name="regex" />
         </div>
-        <div class="">
+        <div class="group">
             <span class="ctrl_label">Update:</span>
             <input type="checkbox" name="autoupdate" value="false" />
         </div>
-        <div class="">
+        <div class="group">
             <span class="ctrl_label">Limit:</span>
             <select name="limit" class="">
                 <option value="25">25</option>
@@ -29,7 +29,7 @@
                 <option value="100">100</option>
             </select>
         </div>
-        <div class="">
+        <div class="group">
             <span class="ctrl_label">Ascending:</span>
             <input type="checkbox" name="ascending" value="false" />
         </div>
