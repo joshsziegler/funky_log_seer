@@ -110,6 +110,7 @@ def main():
             for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
                 if count < limit:
                     res = res.split(file_name, 1)
+                    #res = [res[0]].extend(res[1].split(":", 1))
                     srch_rslt.append((res[0], file_name, res[1]))
                 else:
                     break
@@ -124,6 +125,7 @@ def main():
                     for res in grep(regex, file(file_path,'r'), top_to_bottom):
                         if count < limit:
                             res = res.split(file_name, 1)
+                            #res = [res[0]].extend(res[1].split(":", 1))
                             srch_rslt.append((res[0], file_name, res[1]))
                             count += 1
                         else:
