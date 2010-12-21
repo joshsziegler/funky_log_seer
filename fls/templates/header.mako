@@ -18,7 +18,7 @@
             <input type="text" name="regex" />
         </div>
         <div class="group">
-            <span class="ctrl_label">Update:</span>
+            <span id="auto_update_label" class="ctrl_label">Update:</span>
             <input type="checkbox" name="autoupdate" value="true" />
         </div>
         <div class="group">
