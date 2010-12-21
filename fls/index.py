@@ -109,7 +109,8 @@ def main():
             srch_rslt = []
             for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
                 if count < limit:
-                    srch_rslt.append((file_name, res))
+                    res = res.split(file_name, 1)
+                    srch_rslt.append((res[0], file_name, res[1]))
                 else:
                     break
             ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
@@ -122,7 +123,8 @@ def main():
                     file_path = log_files[file_name]
                     for res in grep(regex, file(file_path,'r'), top_to_bottom):
                         if count < limit:
-                            srch_rslt.append((file_name, res))
+                            res = res.split(file_name, 1)
+                            srch_rslt.append((res[0], file_name, res[1]))
                             count += 1
                         else:
                             break
