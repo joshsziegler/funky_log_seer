@@ -96,7 +96,7 @@ def main():
 
     if form.has_key("limit"):
         limit = int(form.getvalue("limit"))
-        if not is_number(limit) or limit < 0 or limit > 501:
+        if not is_number(limit) or limit < 0 or limit > 10001:
             limit = 25
 
     if form.has_key("toptobottom") and form.getvalue("toptobottom") == "true":
