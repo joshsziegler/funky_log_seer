@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>FLS - Help</title>
+    </head>
+    <body>
+        <div style="width:500px; margin: 75px 100px">
+        <h1>Searching</h1>
+        <p style="border-top-style: solid; padding-top: 5px; ">You can use <a href="http://docs.python.org/library/re.html#regular-expression-syntax">Python's regex syntax</a> to search for anything in the logs.  Note that this interface does not support plus signs (+) and ampersands (&).  If you are unsure of your syntax, check it with <a href="http://www.pythonregex.com/">this online tool.</a></p>
+         <h3>Cheat Sheet</h3>
+         <ul>
+             <li>Match Everything: &nbsp; .</li>
+             <li>Match word: &nbsp; word</li>
+         </ul>
+         <h1>Adding Logs</h1>
+          <p style="border-top-style: solid; padding-top: 5px; ">FLS looks in the default log directory (/var/log/remotesystems/) and adds every file found to it's "Host" selector.  Note that the user which Apache runs under must have read access to these files for FLS to search them!  
+         <h3>Allow Apache To Read Logs</h3>
+         <p>sudo chmod o+r -R /var/log/remotesystems/</p>
+
+         <h1>Options</h1>
+         <p style="border-top-style: solid; padding-top: 5px; ">
+             <ul>
+                 <li><b>Update:</b> Updates the results based on the current query every 10 seconds.</li>
+                 <li><b>Top to Bottom:</b> By default, FLS starts at the bottom of the log file(s) when searching.  With this option enabled, it searches from the top to bottom.</li>
+             </ul> 
+         </p>
+         </div>
+    </body>
+</html>

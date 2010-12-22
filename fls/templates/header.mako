@@ -37,7 +37,8 @@
             <span class="ctrl_label">Top to Bottom:</span>
             <input type="checkbox" name="toptobottom" value="true" class="submit_on_change" />
         </div>
-        <div class="">
+        <div class="group">
+            <a href="help.html" class="ctrl_label" target="_blank">Help</a>
         </div>
     </form>
 </div>
