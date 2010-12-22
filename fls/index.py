@@ -92,6 +92,7 @@ def main():
 
     limit = 25
     top_to_bottom = False
+    regex = "."
 
     if form.has_key("limit"):
         limit = int(form.getvalue("limit"))
@@ -103,39 +104,38 @@ def main():
             
     if form.has_key("regex") and form.getvalue("regex") != "":
         regex = form.getvalue("regex")
-        if form.has_key("file") and form.getvalue("file") != "":
-            file_name = form.getvalue("file")
-            file_path = log_files[file_name]
-            srch_rslt = []
-            for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
-                if count < limit:
-                    res = res.split(file_name, 1)
-                    #res = [res[0]].extend(res[1].split(":", 1))
-                    srch_rslt.append((res[0], file_name, res[1]))
-                else:
-                    break
-            ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
-        else: # TODO: Make this the same as above, using the list files_to_search
-            files_to_search = log_files.keys()
-            srch_rslt = []
-            count = 0
-            for file_name in files_to_search:
-                if count < limit:
-                    file_path = log_files[file_name]
-                    for res in grep(regex, file(file_path,'r'), top_to_bottom):
-                        if count < limit:
-                            res = res.split(file_name, 1)
-                            #res = [res[0]].extend(res[1].split(":", 1))
-                            srch_rslt.append((res[0], file_name, res[1]))
-                            count += 1
-                        else:
-                            break
-                else:
-                    break
+
+    if form.has_key("file") and form.getvalue("file") != "":
+        file_name = form.getvalue("file")
+        file_path = log_files[file_name]
+        srch_rslt = []
+        for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
+            if count < limit:
+                res = res.split(file_name, 1)
+                #res = [res[0]].extend(res[1].split(":", 1))
+                srch_rslt.append((res[0], file_name, res[1]))
+            else:
+                break
+        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
+    else: # TODO: Make this the same as above, using the list files_to_search
+        files_to_search = log_files.keys()
+        srch_rslt = []
+        count = 0
+        for file_name in files_to_search:
+            if count < limit:
+                file_path = log_files[file_name]
+                for res in grep(regex, file(file_path,'r'), top_to_bottom):
+                    if count < limit:
+                        res = res.split(file_name, 1)
+                        #res = [res[0]].extend(res[1].split(":", 1))
+                        srch_rslt.append((res[0], file_name, res[1]))
+                        count += 1
+                    else:
+                        break
+            else:
+                break
             
-            ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
-    else:
-        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=[], file_options=log_files)
+        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
 
     try:
         mylkup = TemplateLookup(directories=['templates/'])
