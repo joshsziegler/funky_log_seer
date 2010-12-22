@@ -3,13 +3,22 @@
         <title>FLS - Help</title>
     </head>
     <body>
-        <div style="width:500px; margin: 75px 100px">
+        <div style="width:650px; margin: 75px 100px">
         <h1>Searching</h1>
-        <p style="border-top-style: solid; padding-top: 5px; ">You can use <a href="http://docs.python.org/library/re.html#regular-expression-syntax">Python's regex syntax</a> to search for anything in the logs.  Note that this interface does not support plus signs (+) and ampersands (&).  If you are unsure of your syntax, check it with <a href="http://www.pythonregex.com/">this online tool.</a></p>
+        <p style="border-top-style: solid; padding-top: 5px; ">You can use <a href="http://docs.python.org/library/re.html#regular-expression-syntax">Python's regex syntax</a> to search for anything in the logs.  Note that this interface does not support plus signs (+), question marks (?) and ampersands (&).  If you are unsure of your syntax, check it with <a href="http://www.pythonregex.com/">this online tool.</a></p>
          <h3>Cheat Sheet</h3>
          <ul>
-             <li>Match Everything: &nbsp; .</li>
-             <li>Match word: &nbsp; word</li>
+             <li>Everything: &nbsp; <a href="index.py?regex=." style="text-decoration:none;">.</a></li>
+             <li>Errors: &nbsp; <a href="index.py?regex=error" style="text-decoration:none;">error</a></li>
+             <li>SSH Sessions for Root: &nbsp; <a href="index.py?regex=sshd.*root" style="text-decoration:none;">sshd.*root</a></li>
+             <li>Failed SSH Sessions: &nbsp; <a href="index.py?regex=sshd.*Failed password" style="text-decoration:none;">sshd.*Failed password</a></li>
+             <li>HTTPD Erors: &nbsp; <a href="index.py?regex=httpd.*\[error\]" style="text-decoration:none;">httpd.*\[error\]</a></li>
+             <li>Entries for December 22nd Between 2-4 PM: &nbsp; <a href="index.py?regex=Dec 22 1[4-6]" style="text-decoration:none;">Dec 22 1[4-6]</a></li>
+             <li>Undeliverable Messages: &nbsp; <a href="index.py?regex=undeliverable address" style="text-decoration:none;">undeliverable address</a></li>
+             <li>Sudo Commands: &nbsp; <a href="index.py?regex=sudo" style="text-decoration:none;">sudo</a></li>
+             <li>Microsoft Security Logs: &nbsp; <a href="index.py?regex=MSWinEventLog.{3}Security" style="text-decoration:none;">MSWinEventLog.{3}Security</a></li>
+             <li>Email Chains: &nbsp; <a href="index.py?regex=SUBJ.{0,4}((Fwd|FW).{0,4}){2,9}" style="text-decoration:none;">SUBJ.{0,4}((Fwd|FW).{0,4}){2,9}</a></li>
+             <li>Email with "Facebook" or "LinkedIn" in the Subject: &nbsp; <a href="index.py?regex=SUBJ.{0,15}(LinkedIn|Facebook)" style="text-decoration:none;">SUBJ.{0,15}(LinkedIn|Facebook)</a></li>
          </ul>
          <h1>Adding Logs</h1>
           <p style="border-top-style: solid; padding-top: 5px; ">FLS looks in the default log directory (/var/log/remotesystems/) and adds every file found to it's "Host" selector.  Note that the user which Apache runs under must have read access to these files for FLS to search them!  
