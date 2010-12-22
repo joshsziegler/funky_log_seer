@@ -4,5 +4,6 @@
         setup_auto_update_page(10);
         setup_host_shortcuts();
         setup_search_shortcuts();
+        setup_changes_monitor();
     });
 </script>

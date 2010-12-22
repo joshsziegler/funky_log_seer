@@ -5,7 +5,7 @@
     <form name="search" action="${search_page}" method="get" class="search">
         <div class="group">
             <span class="ctrl_label">Host:</span>
-            <select name="file" class="host_key_selector">
+            <select name="file" class="host_key_selector submit_on_change">
                 <option value="">all</option>
                 <%
                   # Dictionaries have no "order" so sort the keys
@@ -23,19 +23,19 @@
         </div>
         <div class="group">
             <span id="auto_update_label" class="ctrl_label">Update:</span>
-            <input type="checkbox" name="autoupdate" value="true" />
+            <input type="checkbox" name="autoupdate" value="true" class="submit_on_change" />
         </div>
         <div class="group">
             <span class="ctrl_label">Limit:</span>
-            <select name="limit" class="">
+            <select name="limit" class="submit_on_change">
                 <option value="25">25</option>
                 <option value="50">50</option>
                 <option value="100">100</option>
             </select>
         </div>
         <div class="group">
-            <span class="ctrl_label">Ascending:</span>
-            <input type="checkbox" name="ascending" value="true" />
+            <span class="ctrl_label">Top to Bottom:</span>
+            <input type="checkbox" name="toptobottom" value="true" class="submit_on_change" />
         </div>
         <div class="">
         </div>

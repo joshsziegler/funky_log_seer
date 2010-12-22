@@ -10,6 +10,7 @@
     <script type="text/javascript" src="js/update_page.js"></script>
     <script type="text/javascript" src="js/setup_host_shortcuts.js"></script>
     <script type="text/javascript" src="js/setup_search_shortcuts.js"></script>
+    <script type="text/javascript" src="js/setup_changes_monitor.js"></script>
   </head>
   <body>
       <%include file="/js_on_page_load.mako"/>
