@@ -80,7 +80,7 @@
   color:#333333;
   font-family:'Helvetica Neue',Arial,'Liberation Sans',FreeSans,sans-serif;
   font-size:12px;
-  height:130px;
+  height:90px;
   margin:0 -10px;
   min-width:980px;
   padding:0 10px;
@@ -188,9 +188,9 @@
   background:none repeat scroll 0 0 #111111;
   color:#FFFFFF;
   font-family:'Monaco','Deja Vu Sans Mono','Inconsolata','Consolas',monospace;
-  font-size:10px;
-  margin:10px;
-  padding-top:130px;
+  font-size:12px;
+  margin:12px;
+  padding-top:90px;
   }
   a {
   color:#00FF00;

@@ -19,7 +19,7 @@
         </div>
         <div class="group">
             <span class="ctrl_label">Search:</span>
-            <input type="text" name="regex" />
+            <input type="text" name="regex" size="40" />
         </div>
         <div class="group">
             <span id="auto_update_label" class="ctrl_label">Update:</span>
