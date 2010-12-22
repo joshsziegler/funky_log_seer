@@ -7,7 +7,11 @@
             <span class="ctrl_label">Host:</span>
             <select name="file" class="host_key_selector">
                 <option value="">all</option>
-                % for file in file_options.keys():
+                <%
+                  # Dictionaries have no "order" so sort the keys
+                  sorted_file_names = sorted(file_options.iterkeys(), key=str.lower)
+                %>
+                % for file in sorted_file_names:
                       <option value="${file}">${file}</option>
                 % endfor
             </select>

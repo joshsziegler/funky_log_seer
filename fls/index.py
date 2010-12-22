@@ -50,7 +50,7 @@ def get_log_files():
         for log in files:
             log_name = log.replace(".log", "")
             results[log_name] =  os.path.join(root, log)
-    return results
+    return results 
 
 def grep(pattern, file_obj, top_to_bottom=False, include_line_nums=False):
     # TODO: Add option to flip these results around
