@@ -1,10 +1,8 @@
-#!/usr/bin/python26
+#!/usr/bin/python
 
 import cgi
 import sys
 
-sys.path.append('/usr/lib/python2.4/site-packages/')
-sys.path.append('/usr/lib64/python2.4/site-packages/')
 from mako.lookup import TemplateLookup
 from mako.template import Template
 from mako.runtime import Context
