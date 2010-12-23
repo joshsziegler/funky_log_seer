@@ -39,9 +39,6 @@ I am not aware of a method which the regex input can be exploited as it is check
 - [Mako Templates](http://www.makotemplates.org/)   
     
   
-##Setup / Installation  
-FLS is a simple CGI application, so if you like, you can simply drop it in your /var/www/html/ directory and the example Apache config file in /etc/httpd/conf.d/ and be done with it.  Running FLS under mod_python should give you a speed boost, but I have yet to do this.  
-  
 ##Setup / Installation
 FLS is a simple CGI application, so if you like, you can simply drop it and the example Apache config file in and be done with it.  Running FLS under mod_python should give you a speed boost, but I have yet to do this.  
     
