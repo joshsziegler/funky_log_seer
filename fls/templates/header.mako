@@ -4,8 +4,8 @@
     </div>
     <form name="search" action="${search_page}" method="get" class="search">
         <div class="group">
-            <span class="ctrl_label">Host:</span>
-            <select name="file" class="host_key_selector submit_on_change">
+            <span class="ctrl_label">File:</span>
+            <select name="file" class="file_key_selector submit_on_change">
                 <option value="">all</option>
                 <%
                   # Dictionaries have no "order" so sort the keys

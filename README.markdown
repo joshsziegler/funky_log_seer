@@ -46,7 +46,7 @@ FLS is a simple CGI application, so if you like, you can simply drop it in your 
 FLS is a simple CGI application, so if you like, you can simply drop it and the example Apache config file in and be done with it.  Running FLS under mod_python should give you a speed boost, but I have yet to do this.  
     
 ###Basic Install  
-**Note: These instructions assume you have Apache and Python 2.5 already installed.**  
+**Note:** These instructions assume you have Apache and Python 2.5 already installed.  
     git clone git://github.com/joshsziegler/funky_log_seer.git   
     sudo cp funky\_log\_seer/fls /var/www/html/  
     sudo cp funky\_log\_seer/fls/fls.conf /etc/httpd/conf.d/  
