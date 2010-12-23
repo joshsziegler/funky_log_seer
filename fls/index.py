@@ -9,92 +9,25 @@ from mako.runtime import Context
 from StringIO import StringIO
 from mako import exceptions
 
+from shared import utils   
+
 LOG_DIR = "/var/log/"
-
-def reversed_lines(file):
-    """Generate the lines of file in reverse order.
-        
-       http://stackoverflow.com/questions/260273/most-efficient-way-to-search-the-last-x-lines-of-a-file-in-python/260433#260433
-    """
-    tail = []           # Tail of the line whose head is not yet read.
-    for block in reversed_blocks(file):
-        # A line is a list of strings to avoid quadratic concatenation.
-        # (And trying to avoid 1-element lists would complicate the code.)
-        linelists = [[line] for line in block.splitlines()]
-        linelists[-1].extend(tail)
-        for linelist in reversed(linelists[1:]):
-            yield ''.join(linelist)
-        tail = linelists[0]
-    if tail: yield ''.join(tail)
-
-def reversed_blocks(file, blocksize=4096):
-    "Generate blocks of file's contents in reverse order."
-    import os
-
-    file.seek(0, os.SEEK_END)
-    here = file.tell()
-    while 0 < here:
-        delta = min(blocksize, here)
-        file.seek(here - delta, os.SEEK_SET)
-        yield file.read(delta)
-        here -= delta
-
-def get_log_files():
-    """Returns array of tuples with the log's name and path.
-    """
-    import os
-    results = {} 
-    for root, dirs, files in os.walk(LOG_DIR):
-        for log in files:
-            log_name = log.replace(".log", "")
-            results[log_name] =  os.path.join(root, log)
-    return results 
-
-def grep(pattern, file_obj, top_to_bottom=False, include_line_nums=False):
-    import re
-    if not top_to_bottom:
-        file_obj = reversed_lines(file_obj)
-
-    try:
-        grepper = re.compile(pattern)
-        for line_num, line in enumerate(file_obj):
-            line =  line.replace("\n", "")
-            if grepper.search(line):
-                if include_line_nums:
-                    yield (line_num, line)
-                else:
-                    yield line
-    except Exception, e:
-         print "<p>Error in regex!</p>" 
-         print e
-
-def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
 
 def show_headers():
     print "Content-type: text/html" 
     print ""
 
-def main():
-    show_headers()
-
-    form = cgi.FieldStorage()
-    buf = StringIO()
-
-    log_files = get_log_files()
-
+def get_user_args(form, log_files):
+    # Setup defaults for user inputs
     limit = 25
     top_to_bottom = False
     regex = "."
+    files_to_search = []
 
     # Check input for size, type and valid values
     if form.has_key("limit"):
         limit = int(form.getvalue("limit"))
-        if not is_number(limit) or limit < 0 or limit > 10001:
+        if not utils.is_number(limit) or limit < 0 or limit > 10001:
             limit = 25
 
     if form.has_key("toptobottom") and form.getvalue("toptobottom") == "true":
@@ -106,48 +39,45 @@ def main():
     else:
         regex = "."
 
-    # Note we only allow files to be searched if they exist in this dict
-    # Otherwise a user could traverse the filesystem and read in /etc/passwd!
     if form.has_key("file") and form.getvalue("file") != "":
-        file_name = form.getvalue("file")
-        file_path = log_files[file_name]
-        srch_rslt = []
-        for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
-            if count < limit:
-                # This assumes a syslog format (Date hostname program : content)
-                res_split = res.split(file_name, 1)
-                #res = [res[0]].extend(res[1].split(":", 1))
-                try:
-                    srch_rslt.append((res_split[0], file_name, res_split[1]))
-                except:
-                    srch_rslt.append((file_name, res))
-            else:
-                break
-        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
-    else: # TODO: Make this the same as above, using the list files_to_search
+        files_to_search = [form.getvalue("file")]
+    else:
         files_to_search = log_files.keys()
-        srch_rslt = []
-        count = 0
-        for file_name in files_to_search:
-            if count < limit:
-                file_path = log_files[file_name]
-                for res in grep(regex, file(file_path,'r'), top_to_bottom):
-                    if count < limit:
-                        # This assumes a syslog format (Date hostname program : content)
-                        res_split = res.split(file_name, 1)
-                        #res = [res[0]].extend(res[1].split(":", 1))
-                        try:
-                            srch_rslt.append((res_split[0], file_name, res_split[1]))
-                        except:
-                            srch_rslt.append((file_name, res))
-                        count += 1
-                    else:
-                        break
-            else:
-                break
-            
-        ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
 
+    return limit, top_to_bottom, regex, files_to_search
+
+def main():
+    show_headers()
+
+    form = cgi.FieldStorage()
+    html_output = StringIO() 
+    log_files = utils.get_log_files(LOG_DIR)
+    limit, top_to_bottom, regex, files_to_search = get_user_args(form, log_files)
+
+    srch_rslt = []
+    result_count = 0
+    for file_name in files_to_search:
+        if result_count < limit:
+            # Note we only allow files to be searched if they exist in this dict
+            # Otherwise a user could traverse the filesystem and read in /etc/passwd!
+            file_path = log_files[file_name]
+            for result in utils.grep(regex, file(file_path,'r'), top_to_bottom):
+                if result_count < limit:
+                    # This assumes a syslog format (Date hostname program : content)
+                    res_split = result.split(file_name, 1)
+                    #res = [res[0]].extend(res[1].split(":", 1))
+                    try:
+                        srch_rslt.append((res_split[0], file_name, res_split[1]))
+                    except:
+                        srch_rslt.append((file_name, result))
+                    result_count += 1
+                else:
+                    break
+        else:
+            break
+        
+    ctx = Context(html_output, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
+    # Try to lookup the template and to render it using our context
     try:
         mylkup = TemplateLookup(directories=['templates/'])
         mytemp = Template(filename='templates/index.mako', lookup=mylkup)
@@ -155,7 +85,8 @@ def main():
     except:
         print exceptions.text_error_template().render()
 
-    print buf.getvalue()
+    # Print the resulting HTML 
+    print html_output.getvalue()
 
 if __name__ == '__main__':
      main()

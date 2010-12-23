@@ -21,8 +21,7 @@
              <li>Email with "Facebook" or "LinkedIn" in the Subject: &nbsp; <a href="index.py?regex=SUBJ.{0,15}(LinkedIn|Facebook)" style="text-decoration:none;">SUBJ.{0,15}(LinkedIn|Facebook)</a></li>
          </ul>
          <h1>Adding Logs</h1>
-          <p style="border-top-style: solid; padding-top: 5px; ">FLS looks in
-          the default log directory (/var/log/remotesystems/) and adds every file found to it's "File" selector.  Note that the user which Apache runs under must have read access to these files for FLS to search them!  
+          <p style="border-top-style: solid; padding-top: 5px; ">FLS looks in the default log directory (/var/log/remotesystems/) and adds every file found to it's "Host" selector.  Note that the user which Apache runs under must have read access to these files for FLS to search them!  
          <h3>Allow Apache To Read Logs</h3>
          <p>sudo chmod o+r -R /var/log/remotesystems/</p>
 
