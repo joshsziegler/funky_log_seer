@@ -59,5 +59,5 @@ FLS is a simple CGI application, so if you like, you can simply drop it and the 
       sudo chmod o+r -R /var/logs/remotesystems  
   
 ##Thanks  
-- Tobias Lütke - The entire look of FLS was taken from [Tobi's](https://github.com/tobi) [Clarity]() tool.  I am not a web developer, nor am I artistic, so I deeply appreciate his work and open source code!  I owe you Tobi...   
+- Tobias Lütke - The entire look of FLS was taken from [Tobi's](https://github.com/tobi) [Clarity](https://github.com/tobi/clarity) tool.  I am not a web developer, nor am I artistic, so I deeply appreciate his work and open source code!  I owe you Tobi...   
 - Chad Myslinsky - For supporting me while developing FLS and giving me the resources to put it into action at work. Thanks for letting me do my thing Chad..  

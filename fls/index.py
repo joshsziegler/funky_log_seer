@@ -9,7 +9,7 @@ from mako.runtime import Context
 from StringIO import StringIO
 from mako import exceptions
 
-LOG_DIR = "/var/log/remotesystems/"
+LOG_DIR = "/var/log/"
 
 def reversed_lines(file):
     """Generate the lines of file in reverse order.
@@ -51,7 +51,6 @@ def get_log_files():
     return results 
 
 def grep(pattern, file_obj, top_to_bottom=False, include_line_nums=False):
-    # TODO: Add option to flip these results around
     import re
     if not top_to_bottom:
         file_obj = reversed_lines(file_obj)
@@ -115,9 +114,13 @@ def main():
         srch_rslt = []
         for count, res in  enumerate(grep(regex, file(file_path, 'r'), top_to_bottom)):
             if count < limit:
-                res = res.split(file_name, 1)
+                # This assumes a syslog format (Date hostname program : content)
+                res_split = res.split(file_name, 1)
                 #res = [res[0]].extend(res[1].split(":", 1))
-                srch_rslt.append((res[0], file_name, res[1]))
+                try:
+                    srch_rslt.append((res_split[0], file_name, res_split[1]))
+                except:
+                    srch_rslt.append((file_name, res))
             else:
                 break
         ctx = Context(buf, page_title="FLS",app_name="Funky Log Seer", search_page="index.py", log_results=srch_rslt, file_options=log_files)
@@ -130,9 +133,13 @@ def main():
                 file_path = log_files[file_name]
                 for res in grep(regex, file(file_path,'r'), top_to_bottom):
                     if count < limit:
-                        res = res.split(file_name, 1)
+                        # This assumes a syslog format (Date hostname program : content)
+                        res_split = res.split(file_name, 1)
                         #res = [res[0]].extend(res[1].split(":", 1))
-                        srch_rslt.append((res[0], file_name, res[1]))
+                        try:
+                            srch_rslt.append((res_split[0], file_name, res_split[1]))
+                        except:
+                            srch_rslt.append((file_name, res))
                         count += 1
                     else:
                         break

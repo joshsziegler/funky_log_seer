@@ -18,8 +18,12 @@
       <div id="results">
           <ul class="entries">
               % for line in log_results:
-                  <li><a href="#" class="search_shortcut">${line[0]}</a>
-                  <a href="#" class="file_key_change">${line[1]}</a> : ${line[2]}</li>
+                  % if len(line) == 3:
+                      <li><a href="#" class="search_shortcut">${line[0]}</a>
+                      <a href="#" class="file_key_change">${line[1]}</a> : ${line[2]}</li>
+                  % else:
+                      <li><a href="#" class="file_key_change">${line[0]}</a> : ${line[1]}</li>
+                  % endif
               % endfor
           </ul>
       </div>
