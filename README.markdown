@@ -1,3 +1,5 @@
+#[Funky Log Seer (FLS)](https://github.com/joshsziegler/funky_log_seer)  
+
 ##License  
 Copyright 2010 Josh Ziegler  
   
@@ -24,24 +26,32 @@ FLS allows you to use Python's powerful regular expression syntax to search file
 **Note:** FLS does not do event correlation, alerts, graphing, or anything besides search.  
 
 ## Performance
-At my last job, we ran FLS on a dedicated VM which held logs for a dozen servers/appliances without issue.  I have not done any serious testing beyond that, but it seems to be roughly equivalent in speed to grepping the same files at the command line.   
-
+At my last job, we ran FLS on a dedicated VM which could search logs for a dozen servers/appliances without issue.  I have not done any serious testing beyond that, but it seems to be roughly equivalent in speed to grepping the same files at the command line.   
+  
+# Security / Information Assurance  
+No user input is executed at the command line, and everything is checked for validity/length. While FLS allows you to search any file in a specified directory, it does not take the user's input as a file name.  It only passes back the base of the file name (sans ".log") and looks that up in a dictionary of acceptable files.   
+  
+I am not aware of a method which the regex input can be exploited as it is checked for length (max 50 chars) and passed to `re.compile()` which should handle invalid input just fine.  If anyone can take a look at my code and help me out here, it would be appreciated.   
+  
 ##System Requirements  
-- Apache   
-- Python 2.5   
-- [Mako Templates](http://www.makotemplates.org/)  
+- Apache    
+- Python 2.5    
+- [Mako Templates](http://www.makotemplates.org/)   
+    
   
-
-##Setup / Installation
+##Setup / Installation  
 FLS is a simple CGI application, so if you like, you can simply drop it in your /var/www/html/ directory and the example Apache config file in /etc/httpd/conf.d/ and be done with it.  Running FLS under mod_python should give you a speed boost, but I have yet to do this.  
   
-
 ##Setup / Installation
-FLS is a simple CGI application, so if you like, you can simply drop it in your /var/www/html/ directory and the example Apache config file in /etc/httpd/conf.d/ and be done with it.  Running FLS under mod_python should give you a speed boost, but I have yet to do this.  
+FLS is a simple CGI application, so if you like, you can simply drop it and the example Apache config file in and be done with it.  Running FLS under mod_python should give you a speed boost, but I have yet to do this.  
+    
+###Basic Install  
+**Note: These instructions assume you have Apache and Python 2.5 already installed.**  
+1. `git clone git://github.com/joshsziegler/funky_log_seer.git`   
+2. `sudo cp funky\_log\_seer/fls /var/www/html/`  
+3. `sudo cp funky\_log\_seer/fls/fls.conf /etc/httpd/conf.d/`  
+4. `sudo /etc/init.d/apache restart`  
   
-###Basic Install
-**Note: These instructions assume you have Apache and Python 2.5 already installed.**
-1. `git clone git://github.com/joshsziegler/funky_log_seer.git`
-2. `sudo cp funky\_log\_seer/fls /var/www/html/`
-3. `sudo cp funky\_log\_seer/fls/fls.conf /etc/httpd/conf.d/`
-4. `sudo /etc/init.d/apache restart`
+##Thanks  
+- Tobias Lütke - The entire look of FLS was taken from [Tobi's](https://github.com/tobi) [Clarity]() tool.  I am not a web developer, nor am I artistic, so I deeply appreciate his work and open source code!  I owe you Tobi...   
+- Chad Myslinsky - For supporting me while developing FLS and giving me the resources to put it into action at work. Thanks for letting me do my thing Chad..  

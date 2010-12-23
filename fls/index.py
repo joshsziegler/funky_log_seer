@@ -94,6 +94,7 @@ def main():
     top_to_bottom = False
     regex = "."
 
+    # Check input for size, type and valid values
     if form.has_key("limit"):
         limit = int(form.getvalue("limit"))
         if not is_number(limit) or limit < 0 or limit > 10001:
@@ -102,9 +103,14 @@ def main():
     if form.has_key("toptobottom") and form.getvalue("toptobottom") == "true":
         top_to_bottom = True 
             
-    if form.has_key("regex") and form.getvalue("regex") != "":
+    regex = form.getvalue("regex")
+    if form.has_key("regex") and regex != "" and len(regex) < 50:
         regex = form.getvalue("regex")
+    else:
+        regex = "."
 
+    # Note we only allow files to be searched if they exist in this dict
+    # Otherwise a user could traverse the filesystem and read in /etc/passwd!
     if form.has_key("file") and form.getvalue("file") != "":
         file_name = form.getvalue("file")
         file_path = log_files[file_name]
