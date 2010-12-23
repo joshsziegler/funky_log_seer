@@ -50,7 +50,7 @@ FLS is a simple CGI application, so if you like, you can simply drop it and the 
  `git clone git://github.com/joshsziegler/funky_log_seer.git   
  sudo cp funky\_log\_seer/fls /var/www/html/  
  sudo cp funky\_log\_seer/fls/fls.conf /etc/httpd/conf.d/  
- sudo /etc/init.d/apache restart  
+ sudo /etc/init.d/apache restart`  
   
 ##Thanks  
 - Tobias Lütke - The entire look of FLS was taken from [Tobi's](https://github.com/tobi) [Clarity]() tool.  I am not a web developer, nor am I artistic, so I deeply appreciate his work and open source code!  I owe you Tobi...   
